@@ -5,14 +5,25 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive,TranslateModule],
+  imports: [RouterLink, RouterLinkActive, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-   constructor(private eRef: ElementRef) {
-    // this.translate.setFallbackLang('de');
-    // this.translate.use('de');
+  languages = [
+    { code: 'de', label: 'GER', flag: 'assets/img/eng.svg' },
+    { code: 'en', label: 'EN', flag: 'assets/img/eng.svg' }
+  ];
+
+  selectedLang = this.languages[0];
+
+  constructor(private eRef: ElementRef, private translate: TranslateService) {
+    const savedLang = localStorage.getItem('appLanguage');
+    if (savedLang) {
+      this.selectedLang = this.languages.find(l => l.code === savedLang) ?? this.languages[0];
+    }
+    this.translate.setDefaultLang(this.selectedLang.code);
+    this.translate.use(this.selectedLang.code);
   }
 
 
@@ -26,7 +37,6 @@ export class NavbarComponent {
     this.isMenuOpen = false;
   }
 
-  // close if clicked outside
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
     if (this.isMenuOpen && !this.eRef.nativeElement.contains(event.target)) {
@@ -34,9 +44,10 @@ export class NavbarComponent {
     }
   }
 
-
-   switchLang(lang: string) {
-    // this.translate.use(lang);
+  switchLanguage(lang: string) {
+    this.translate.use(lang);
+    this.selectedLang = this.languages.find(l => l.code === lang) ?? this.selectedLang;
+     localStorage.setItem('appLanguage', lang);
   }
 
 }

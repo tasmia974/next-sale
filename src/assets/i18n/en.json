@@ -1,5 +1,7 @@
 {
-  "HELLO": "Welcome to our website",
-  "DESCRIPTION": "This is an English default message.",
-  "BUTTON_START": "Get Started"
+    "Home": "Home",
+    "About us": "About Us",
+    "Services": "Services",
+    "FAQ": "FAQ",
+    "Contact": "Contact"
 }

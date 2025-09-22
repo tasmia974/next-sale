@@ -1,7 +1,7 @@
-
-
 {
-  "HELLO": "Willkommen auf unserer Seite",
-  "DESCRIPTION": "Dies ist eine deutsche Standardnachricht.",
-  "BUTTON_START": "Jetzt starten"
+  "Home": "Startseite",
+  "About us": "Über uns",
+  "Services": "Dienstleistungen",
+  "FAQ": "FAQ",
+  "Contact": "Kontakt"
 }
