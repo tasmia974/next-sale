@@ -7,70 +7,18 @@
 <section id="services" class="services-section d-none d-md-flex">
   <div class="services-container">
     <div class="services-grid">
-      <article class="service-card" style="gap: 80px;">
+      @for (service of services; track service.title) {
+      <article class="service-card" [style.gap]="service.gap">
         <div class="service-icon-wrapper">
-          <img src="assets/img/bg-circle.svg" class="icon-bg">
-          <img src="assets/img/website.svg" class="icon-fg">
+          <img [src]="service.bgIcon" class="icon-bg">
+          <img [src]="service.icon" class="icon-fg">
         </div>
         <div class="service-content">
-          <h3 class="service-title">Website Development</h3>
-          <p class="service-description">Modern, responsive websites designed to convert visitors into customers.
-          </p>
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-description">{{ service.description }}</p>
         </div>
       </article>
-      <article class="service-card" style="gap: 61px;">
-        <div class="service-icon-wrapper">
-          <img src="assets/img/bg-circle.svg" class="icon-bg">
-          <img src="assets/img/seo.svg" class="icon-fg">
-        </div>
-        <div class="service-content">
-          <h3 class="service-title">SEO & Google Ads Optimization</h3>
-          <p class="service-description">Boost your visibility and drive high-quality traffic that converts.</p>
-        </div>
-      </article>
-      <article class="service-card" style="gap: 80px;">
-        <div class="service-icon-wrapper">
-          <img src="assets/img/bg-circle.svg" class="icon-bg">
-          <img src="assets/img/website.svg" class="icon-fg">
-        </div>
-        <div class="service-content">
-          <h3 class="service-title">Website Development</h3>
-          <p class="service-description">Modern, responsive websites designed to convert visitors into customers.
-          </p>
-        </div>
-      </article>
-      <article class="service-card" style="gap: 43px;">
-        <div class="service-icon-wrapper">
-          <img src="assets/img/bg-circle.svg" class="icon-bg">
-          <img src="assets/img/funding.svg" class="icon-fg">
-        </div>
-        <div class="service-content">
-          <h3 class="service-title">Funding & Grant Consulting</h3>
-          <p class="service-description">Get guidance on grants and funding opportunities to scale your business.
-          </p>
-        </div>
-      </article>
-      <article class="service-card" style="gap: 57px;">
-        <div class="service-icon-wrapper">
-          <img src="assets/img/bg-circle.svg" class="icon-bg">
-          <img src="assets/img/reucirting.svg" class="icon-fg">
-        </div>
-        <div class="service-content">
-          <h3 class="service-title">Recruiting Websites</h3>
-          <p class="service-description">Specialized solutions for HR and recruitment to increase applications.</p>
-        </div>
-      </article>
-      <article class="service-card" style="gap: 43px;">
-        <div class="service-icon-wrapper">
-          <img src="assets/img/bg-circle.svg" class="icon-bg">
-          <img src="assets/img/funding.svg" class="icon-fg">
-        </div>
-        <div class="service-content">
-          <h3 class="service-title">Funding & Grant Consulting</h3>
-          <p class="service-description">Get guidance on grants and funding opportunities to scale your business.
-          </p>
-        </div>
-      </article>
+      }
     </div>
     <div class="row button-container mt-5">
       <div class="col-12 text-center">
@@ -85,327 +33,139 @@
 <div class="container">
   <div id="carouselOne" class="carousel slide carousel-one d-md-none" data-bs-ride="carousel">
     <div class="carousel-inner">
-
-      <div class="carousel-item active">
-        <article class="service-card" style="gap: 80px;">
+      @for (service of services; track service; let i = $index) {
+      <div class="carousel-item" [class.active]="i === 0">
+        <article class="service-card" [ngStyle]="{ 'gap': service.gap }">
           <div class="service-icon-wrapper">
             <img src="assets/img/bg-circle.svg" class="icon-bg">
-            <img src="assets/img/website.svg" class="icon-fg">
+            <img [src]="service.icon" class="icon-fg">
           </div>
           <div class="service-content">
-            <h3 class="service-title">Website Development</h3>
-            <p class="service-description">Modern, responsive websites designed to convert visitors into customers.</p>
+            <h3 class="service-title">{{ service.title }}</h3>
+            <p class="service-description">{{ service.description }}</p>
           </div>
         </article>
       </div>
-      <div class="carousel-item">
-        <article class="service-card" style="gap: 61px;">
-          <div class="service-icon-wrapper">
-            <img src="assets/img/bg-circle.svg" class="icon-bg">
-            <img src="assets/img/seo.svg" class="icon-fg">
-          </div>
-          <div class="service-content">
-            <h3 class="service-title">SEO & Google Ads Optimization</h3>
-            <p class="service-description">Boost your visibility and drive high-quality traffic that converts.</p>
-          </div>
-        </article>
-      </div>
-      <div class="carousel-item">
-        <article class="service-card" style="gap: 80px;">
-          <div class="service-icon-wrapper">
-            <img src="assets/img/bg-circle.svg" class="icon-bg">
-            <img src="assets/img/website.svg" class="icon-fg">
-          </div>
-          <div class="service-content">
-            <h3 class="service-title">Website Development</h3>
-            <p class="service-description">Modern, responsive websites designed to convert visitors into customers.</p>
-          </div>
-        </article>
-      </div>
-      <div class="carousel-item">
-        <article class="service-card" style="gap: 43px;">
-          <div class="service-icon-wrapper">
-            <img src="assets/img/bg-circle.svg" class="icon-bg">
-            <img src="assets/img/funding.svg" class="icon-fg">
-          </div>
-          <div class="service-content">
-            <h3 class="service-title">Funding & Grant Consulting</h3>
-            <p class="service-description">Get guidance on grants and funding opportunities to scale your business.</p>
-          </div>
-        </article>
-      </div>
-      <div class="carousel-item">
-        <article class="service-card" style="gap: 57px;">
-          <div class="service-icon-wrapper">
-            <img src="assets/img/bg-circle.svg" class="icon-bg">
-            <img src="assets/img/reucirting.svg" class="icon-fg">
-          </div>
-          <div class="service-content">
-            <h3 class="service-title">Recruiting Websites</h3>
-            <p class="service-description">Specialized solutions for HR and recruitment to increase applications.</p>
-          </div>
-        </article>
-      </div>
-      <div class="carousel-item">
-        <article class="service-card" style="gap: 43px;">
-          <div class="service-icon-wrapper">
-            <img src="assets/img/bg-circle.svg" class="icon-bg">
-            <img src="assets/img/funding.svg" class="icon-fg">
-          </div>
-          <div class="service-content">
-            <h3 class="service-title">Funding & Grant Consulting</h3>
-            <p class="service-description">Get guidance on grants and funding opportunities to scale your business.</p>
-          </div>
-        </article>
+      }
+    </div>
+    <div class="row button-container mt-5 d-md-none">
+      <div class="col-12 text-center">
+        <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
       </div>
     </div>
   </div>
-  <div class="row button-container mt-5 d-md-none">
-    <div class="col-12 text-center">
-      <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
+
+
+  <section id="get-started">
+    <div class="get-started-container">
+      <img src="assets/img/top-wave.svg" class="get-started-background">
+      <h2 class="get-started-title my-5">Get Started in 3 Simple Steps</h2>
     </div>
-  </div>
-</div>
+  </section>
 
-
-<section id="get-started">
-  <div class="get-started-container">
-    <img src="assets/img/top-wave.svg" class="get-started-background">
-    <h2 class="get-started-title my-5">Get Started in 3 Simple Steps</h2>
-  </div>
-</section>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 text-end order-2 order-md-1">
-      <img src="assets/img/steps.svg" class="img-fluid">
-      <div class="ellipse-divider-blue"></div>
-    </div>
-    <div class="col-md-6 order-1 order-md-2">
-      <div class="process-steps-wrapper">
-        <!-- <div class="process-connector-line"></div> -->
-        <div class="process-step-item">
-          <div class="process-step-number-container">
-            <div class="process-step-number">1</div>
-          </div>
-          <div class="process-step-content">
-            <h3>Enter Your Website URL</h3>
-            <p>Simply type your website address into the form on this page. No complicated setup or technical
-              knowledge required.</p>
-          </div>
-        </div>
-        <div class="process-step-item">
-          <div class="process-step-number-container">
-            <div class="process-step-number">2</div>
-          </div>
-          <div class="process-step-content">
-            <h3>Instantly Receive Your Test Results</h3>
-            <p>Our system quickly scans your site and provides an instant performance score—covering speed, mobile
-              optimization, and user experience.</p>
-          </div>
-        </div>
-        <div class="process-step-item">
-          <div class="process-step-number-container">
-            <div class="process-step-number">3</div>
-          </div>
-          <div class="process-step-content">
-            <h3>Get Expert Analysis + Free PDF Report</h3>
-            <p>Get a free PDF with expert recommendations and funding advice, delivered to your inbox.</p>
-            <div class="mt-3">
-              <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-end order-2 order-md-1">
+        <img src="assets/img/steps.svg" class="img-fluid">
+        <div class="ellipse-divider-blue"></div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2">
+        <div class="process-steps-wrapper">
+          <div class="process-step-item">
+            <div class="process-step-number-container">
+              <div class="process-step-number">1</div>
             </div>
-            <div class="ellipse-divider"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<section id="client-title">
-  <div class="client-title-container">
-    <h1 class="title-heading">What <span class="highlight">Our Clients </span>Says?</h1>
-  </div>
-</section>
-
-<div class="container mt-5">
-  <div class="row g">
-    <div class="col m-2">
-      <div id="carouselTwo" class="carousel carousel-two slide" data-bs-ride="carousel">
-
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="0" class="active"></button>
-          <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="2"></button>
-        </div>
-
-        <div class="carousel-inner">
-
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-4">
-                <article class="testimonial-card">
-                  <div class="rating-container">
-                    <div class="rating-badge">
-                      <img src="assets/img/star.svg" class="star-icon">
-                      <span class="rating-text">5.0</span>
-                    </div>
-                  </div>
-                  <blockquote class="testimonial-quote">
-                    “I am absolutely thrilled with the exceptional services provided by Digilink Digital Agency. From
-                    the moment I engaged with them, their team demonstrated a deep understanding of my business needs
-                    and goals.”
-                  </blockquote>
-                  <footer class="author-profile">
-                    <img src="assets/img/client-1.svg" class="author-avatar">
-                    <div class="author-details">
-                      <p class="author-name">Robert Lawsen</p>
-                      <p class="author-title">Directore of Innovation</p>
-                    </div>
-                  </footer>
-                </article>
-              </div>
-
-              <div class="col-12 col-md-6 col-lg-4 d-none d-md-block">
-                <article class="testimonial-card">
-                  <div class="rating-container">
-                    <div class="rating-badge">
-                      <img src="assets/img/star.svg" class="star-icon">
-                      <span class="rating-text">5.0</span>
-                    </div>
-                  </div>
-                  <blockquote class="testimonial-quote">
-                    “Working with Digilink Digital Agency has been a game-changer for my e-commerce business.
-                    Their comprehensive e-commerce solutions have not only boosted our online sales but also streamlined
-                    our operations.”
-                  </blockquote>
-                  <footer class="author-profile">
-                    <img src="assets/img/client2.svg" class="author-avatar">
-                    <div class="author-details">
-                      <p class="author-name">Jhoan Cruyft</p>
-                      <p class="author-title">Web Developer</p>
-                    </div>
-                  </footer>
-                </article>
-              </div>
-
-              <div class="col-12 col-md-6 col-lg-4 d-none d-lg-block">
-                <article class="testimonial-card">
-                  <div class="rating-container">
-                    <div class="rating-badge">
-                      <img src="assets/img/star.svg" class="star-icon">
-                      <span class="rating-text">5.0</span>
-                    </div>
-                  </div>
-                  <blockquote class="testimonial-quote">
-                    "As a startup trying to establish a strong online presence, Digilink provided us with the perfect
-                    support we needed. Their dynamic team brought fresh ideas to the table and collaborated closely with
-                    us."
-                  </blockquote>
-                  <footer class="author-profile">
-                    <img src="assets/img/client3.svg" class="author-avatar">
-                    <div class="author-details">
-                      <p class="author-name">Vixel Sabran</p>
-                      <p class="author-title">Content Manager</p>
-                    </div>
-                  </footer>
-                </article>
-              </div>
+            <div class="process-step-content">
+              <h3>Enter Your Website URL</h3>
+              <p>Simply type your website address into the form on this page. No complicated setup or technical
+                knowledge required.</p>
             </div>
           </div>
+          <div class="process-step-item">
+            <div class="process-step-number-container">
+              <div class="process-step-number">2</div>
+            </div>
+            <div class="process-step-content">
+              <h3>Instantly Receive Your Test Results</h3>
+              <p>Our system quickly scans your site and provides an instant performance score—covering speed, mobile
+                optimization, and user experience.</p>
+            </div>
+          </div>
+          <div class="process-step-item">
+            <div class="process-step-number-container">
+              <div class="process-step-number">3</div>
+            </div>
+            <div class="process-step-content">
+              <h3>Get Expert Analysis + Free PDF Report</h3>
+              <p>Get a free PDF with expert recommendations and funding advice, delivered to your inbox.</p>
+              <div class="mt-3">
+                <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
+              </div>
+              <div class="ellipse-divider"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- Slide 2 -->
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-4">
-                <article class="testimonial-card">
-                  <div class="rating-container">
-                    <div class="rating-badge">
-                      <img src="assets/img/star.svg" class="star-icon">
-                      <span class="rating-text">5.0</span>
+
+  <section id="client-title">
+    <div class="client-title-container">
+      <h1 class="title-heading">What <span class="highlight">Our Clients </span>Says?</h1>
+    </div>
+  </section>
+
+  <div class="container mt-5">
+    <div class="row g">
+      <div class="col m-2">
+        <div id="carouselTwo" class="carousel carousel-two slide" data-bs-ride="carousel">
+
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="2"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let slide of slides; let i = index" [class.active]="i === 0">
+
+              <div class="row">
+                <div class="col-12 col-md-6 col-lg-4" *ngFor="let testimonial of slide.testimonials; let j = index"
+                  [ngClass]="{'d-none d-md-block': j === 1, 'd-none d-lg-block': j === 2}">
+                  <article class="testimonial-card">
+                    <div class="rating-container">
+                      <div class="rating-badge">
+                        <img src="assets/img/star.svg" class="star-icon">
+                        <span class="rating-text">{{testimonial.rating}}</span>
+                      </div>
                     </div>
-                  </div>
-                  <blockquote class="testimonial-quote">
-                    “I am absolutely thrilled with the exceptional services provided by Digilink Digital Agency. From
-                    the moment I engaged with them, their team demonstrated a deep understanding of my business needs
-                    and goals.”
-                  </blockquote>
-                  <footer class="author-profile">
-                    <img src="assets/img/client-1.svg" class="author-avatar">
-                    <div class="author-details">
-                      <p class="author-name">Robert Lawsen</p>
-                      <p class="author-title">Directore of Innovation</p>
-                    </div>
-                  </footer>
-                </article>
+                    <blockquote class="testimonial-quote">
+                      {{testimonial.quote}}
+                    </blockquote>
+                    <footer class="author-profile">
+                      <img [src]="testimonial.avatar" class="author-avatar">
+                      <div class="author-details">
+                        <p class="author-name">{{testimonial.name}}</p>
+                        <p class="author-title">{{testimonial.title}}</p>
+                      </div>
+                    </footer>
+                  </article>
+
+                </div>
               </div>
 
-              <div class="col-12 col-md-6 col-lg-4 d-none d-md-block">
-                <article class="testimonial-card">
-                  <div class="rating-container">
-                    <div class="rating-badge">
-                      <img src="assets/img/star.svg" class="star-icon">
-                      <span class="rating-text">5.0</span>
-                    </div>
-                  </div>
-                  <blockquote class="testimonial-quote">
-                    “Working with Digilink Digital Agency has been a game-changer for my e-commerce business.
-                    Their comprehensive e-commerce solutions have not only boosted our online sales but also streamlined
-                    our operations.”
-                  </blockquote>
-                  <footer class="author-profile">
-                    <img src="assets/img/client2.svg" class="author-avatar">
-                    <div class="author-details">
-                      <p class="author-name">Jhoan Cruyft</p>
-                      <p class="author-title">Web Developer</p>
-                    </div>
-                  </footer>
-                </article>
-              </div>
-
-              <div class="col-12 col-md-6 col-lg-4 d-none d-lg-block">
-                <article class="testimonial-card">
-                  <div class="rating-container">
-                    <div class="rating-badge">
-                      <img src="assets/img/star.svg" class="star-icon">
-                      <span class="rating-text">5.0</span>
-                    </div>
-                  </div>
-                  <blockquote class="testimonial-quote">
-                    "As a startup trying to establish a strong online presence, Digilink provided us with the perfect
-                    support we needed. Their dynamic team brought fresh ideas to the table and collaborated closely with
-                    us."
-                  </blockquote>
-                  <footer class="author-profile">
-                    <img src="assets/img/client3.svg" class="author-avatar">
-                    <div class="author-details">
-                      <p class="author-name">Vixel Sabran</p>
-                      <p class="author-title">Content Manager</p>
-                    </div>
-                  </footer>
-                </article>
-              </div>
             </div>
           </div>
 
         </div>
-
-        <!-- Controls -->
-        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bg-dark rounded-circle p-4"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon bg-dark rounded-circle p-4"></span>
-        </button> -->
       </div>
     </div>
   </div>
-</div>
 
-<section id="get-started">
-  <div class="get-started-container1">
-    <img src="assets/img/top-wave.svg" class="get-started-background1">
-  </div>
-</section>
+  <section id="get-started">
+    <div class="get-started-container1">
+      <img src="assets/img/top-wave.svg" class="get-started-background1">
+    </div>
+  </section>

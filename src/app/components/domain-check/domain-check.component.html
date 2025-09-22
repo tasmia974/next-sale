@@ -2,168 +2,72 @@
   <h1 class="text-center mb-5 fw-bold">Website Quality Checker</h1>
 
   <div class="container my-5">
-
-    <div class="container my-5">
-
-      <!-- Form -->
-      <form [formGroup]="checkForm" (ngSubmit)="onSubmit()" class="mb-4 needs-validation" novalidate>
-        <div class="row g-3 justify-content-center">
-
-          <!-- Domain -->
-          <div class="col-12 col-md-4">
-            <input formControlName="domain" type="text" class="form-control" [ngClass]="{
-            'is-invalid': submitted && checkForm.controls['domain'].invalid,
-            'is-valid': submitted && checkForm.controls['domain'].valid
-          }" placeholder="Enter domain (example.com)" autocomplete="url" inputmode="url" required />
-            <div *ngIf="submitted && checkForm.controls['domain'].errors" class="invalid-feedback">
-              <ng-container *ngIf="checkForm.controls['domain'].errors?.['required']">
-                Domain is required.
-              </ng-container>
-              <ng-container *ngIf="checkForm.controls['domain'].errors?.['pattern']">
-                Must be a valid domain (e.g. example.com).
-              </ng-container>
-              <ng-container *ngIf="checkForm.controls['domain'].errors?.['asyncExists']">
-                This domain could not be validated or is unreachable.
-              </ng-container>
-            </div>
-          </div>
-
-          <!-- Name -->
-          <div class="col-12 col-md-3">
-            <input formControlName="name" type="text" class="form-control" [ngClass]="{
-            'is-invalid': submitted && checkForm.controls['name'].invalid,
-            'is-valid': submitted && checkForm.controls['name'].valid
-          }" placeholder="Your Name" autocomplete="name" inputmode="text" required />
-            <div *ngIf="submitted && checkForm.controls['name'].errors" class="invalid-feedback">
-              <ng-container *ngIf="checkForm.controls['name'].errors?.['required']">
-                Name is required.
-              </ng-container>
-              <ng-container *ngIf="checkForm.controls['name'].errors?.['minlength']">
-                Name must be at least 2 characters long.
-              </ng-container>
-            </div>
-          </div>
-
-          <!-- Phone -->
-          <div class="col-12 col-md-3">
-            <input formControlName="phone" type="tel" class="form-control" [ngClass]="{
-            'is-invalid': submitted && checkForm.controls['phone'].invalid,
-            'is-valid': submitted && checkForm.controls['phone'].valid
-          }" placeholder="Phone (e.g. +49 123 4567)" autocomplete="tel" inputmode="tel" required />
-            <div *ngIf="submitted && checkForm.controls['phone'].errors" class="invalid-feedback">
-              <ng-container *ngIf="checkForm.controls['phone'].errors?.['required']">
-                Phone is required.
-              </ng-container>
-              <ng-container *ngIf="checkForm.controls['phone'].errors?.['pattern']">
-                Please enter a valid phone number.
-              </ng-container>
-            </div>
-          </div>
-
-          <!-- Spam Protection -->
-          <div class="col-12 col-md-2 form-check d-flex align-items-center">
-            <input type="checkbox" id="spamCheck" formControlName="spamProtection" class="form-check-input me-2"
-              [ngClass]="{
-            'is-invalid': submitted && checkForm.controls['spamProtection'].invalid
-          }" required />
-            <label for="spamCheck" class="form-check-label">I’m not a robot</label>
-            <div *ngIf="submitted && checkForm.controls['spamProtection'].errors" class="invalid-feedback d-block">
-              Please confirm you’re not a robot.
-            </div>
-          </div>
-
-          <!-- Button -->
-          <div class="col-auto">
-            <button class="btn btn-primary" type="submit" [disabled]="loading">
-              {{ loading ? 'Checking...' : 'Check' }}
-            </button>
-          </div>
-        </div>
-      </form>
-
-      <!-- Loading -->
-      <div *ngIf="loading" class="text-center mb-4">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <p class="mt-2">Running tests...</p>
-      </div>
-
-      <!-- Results -->
-      <div *ngIf="results && !loading" class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title fw-bold mb-3">Website Quality Report</h5>
-          <p class="mb-1"><strong>Domain:</strong> {{ checkForm.value['domain'] }}</p>
-          <p class="mb-1"><strong>Name:</strong> {{ checkForm.value['name'] }}</p>
-          <p class="mb-3"><strong>Phone:</strong> {{ checkForm.value['phone'] }}</p>
-
-          <p>
-            Performance-Score (mobile):
-            <span [ngClass]="{
-            'text-success fw-bold': results.score >= 80,
-            'text-warning fw-bold': results.score >= 50 && results.score < 80,
-            'text-danger fw-bold': results.score < 50
-          }">
-              {{ results.score }}
-            </span>
-          </p>
-
-          <h6 class="fw-semibold mb-2">Mobile Usability Checks:</h6>
-          <div *ngFor="let check of results.checks" class="d-flex align-items-center mb-1">
-            <span class="me-2" [ngClass]="{
-            'text-success': check.status === 'pass',
-            'text-danger': check.status === 'fail',
-            'text-info': check.status === 'info'
-          }">
-              {{ check.status === 'pass' ? '✔' : check.status === 'fail' ? '❌' : 'ℹ' }}
-            </span>
-            {{ check.label }}
-          </div>
-
-          <div *ngIf="results.apiUnavailable" class="alert alert-warning mt-3">
-            API results not available at the moment.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--
     <form [formGroup]="checkForm" (ngSubmit)="onSubmit()" class="mb-4 needs-validation" novalidate>
       <div class="row g-3 justify-content-center">
-
-        <div class="col-12 col-md-4">
-          <input formControlName="domain" type="text" class="form-control"
-            [ngClass]="{'is-invalid': submitted && checkForm.controls['domain'].invalid}"
-            placeholder="Enter domain (example.com)" required />
-          <div *ngIf="submitted && checkForm.controls['domain'].invalid" class="invalid-feedback">
-            Domain is required.
+        <div class="col-12 mb-1">
+          <label for="domain" class="form-label"><strong>Domain</strong></label>
+          <input id="domain" formControlName="domain" type="text" class="form-control"
+            [ngClass]="{'is-invalid': submitted && checkForm.controls['domain'].invalid,'is-valid': submitted && checkForm.controls['domain'].valid}"
+            placeholder="example.com" autocomplete="url" inputmode="url" required />
+          <div *ngIf="submitted && checkForm.controls['domain'].errors" class="invalid-feedback">
+            <ng-container *ngIf="checkForm.controls['domain'].errors?.['required']">
+              Domain is required.
+            </ng-container>
+            <ng-container *ngIf="checkForm.controls['domain'].errors?.['pattern']">
+              Must be a valid domain (e.g. example.com).
+            </ng-container>
+            <ng-container *ngIf="checkForm.controls['domain'].errors?.['asyncExists']">
+              This domain could not be validated or is unreachable.
+            </ng-container>
           </div>
         </div>
 
-        <div class="col-12 col-md-3">
-          <input formControlName="name" type="text" class="form-control"
-            [ngClass]="{'is-invalid': submitted && checkForm.controls['name'].invalid}" placeholder="Your Name"
-            required />
-          <div *ngIf="submitted && checkForm.controls['name'].invalid" class="invalid-feedback">
-            Name is required.
+        <div class="col-12 mb-1">
+          <label for="name" class="form-label"><strong>Name</strong></label>
+          <input id="name" formControlName="name" type="text" class="form-control"
+            [ngClass]="{'is-invalid': submitted && checkForm.controls['name'].invalid,'is-valid': submitted && checkForm.controls['name'].valid}"
+            placeholder="Enter your name" autocomplete="name" inputmode="text" required />
+          <div *ngIf="submitted && checkForm.controls['name'].errors" class="invalid-feedback">
+            <ng-container *ngIf="checkForm.controls['name'].errors?.['required']">
+              Name is required.
+            </ng-container>
+            <ng-container *ngIf="checkForm.controls['name'].errors?.['minlength']">
+              Name must be at least 2 characters long.
+            </ng-container>
           </div>
         </div>
 
-        <div class="col-12 col-md-3">
-          <input formControlName="phone" type="text" class="form-control"
-            [ngClass]="{'is-invalid': submitted && checkForm.controls['phone'].invalid}"
-            placeholder="Phone (e.g. +49 123 4567)" required />
-          <div *ngIf="submitted && checkForm.controls['phone'].errors?.['required']" class="invalid-feedback">
-            Phone is required.
-          </div>
-          <div *ngIf="submitted && checkForm.controls['phone'].errors?.['pattern']" class="invalid-feedback">
-            Please enter a valid phone number.
+        <div class="col-12 mb-1">
+          <label for="phone" class="form-label"><strong>Phone</strong></label>
+          <input id="phone" formControlName="phone" type="tel" class="form-control"
+            [ngClass]="{'is-invalid': submitted && checkForm.controls['phone'].invalid,'is-valid': submitted && checkForm.controls['phone'].valid}"
+            placeholder="+49 123 4567" autocomplete="tel" inputmode="tel" required />
+          <div *ngIf="submitted && checkForm.controls['phone'].errors" class="invalid-feedback">
+            <ng-container *ngIf="checkForm.controls['phone'].errors?.['required']">
+              Phone is required.
+            </ng-container>
+            <ng-container *ngIf="checkForm.controls['phone'].errors?.['pattern']">
+              Please enter a valid phone number.
+            </ng-container>
           </div>
         </div>
 
-        <div class="col-auto">
-          <button class="btn btn-primary" type="submit" [disabled]="loading">
-            {{ loading ? 'Checking...' : 'Check' }}
+        <div class="col-12 form-check mb-1 d-flex align-items-center">
+          <input type="checkbox" id="spamCheck" formControlName="spamProtection" class="form-check-input me-2"
+            [ngClass]="{'is-invalid': submitted && checkForm.controls['spamProtection'].invalid}" required />
+          <label for="spamCheck" class="form-check-label">I’m not a robot</label>
+          <div *ngIf="submitted && checkForm.controls['spamProtection'].errors" class="invalid-feedback d-block">
+            Please confirm you’re not a robot.
+          </div>
+        </div>
+
+
+        <div class="col-auto d-flex gap-2">
+          <button class="btn-cta btn-free" type="Test Now" [disabled]="loading" style="border: none;">
+            {{ loading ? 'Testing...' : 'Test Now' }}
+          </button>
+          <button class="btn-cta btn-contact" type="button" (click)="onReset()" style="padding: 25px;">
+            Reset
           </button>
         </div>
       </div>
@@ -178,7 +82,6 @@
 
     <div *ngIf="results && !loading" class="card shadow-sm">
       <div class="card-body">
-
         <h5 class="card-title fw-bold mb-3">Website Quality Report</h5>
         <p class="mb-1"><strong>Domain:</strong> {{ checkForm.value['domain'] }}</p>
         <p class="mb-1"><strong>Name:</strong> {{ checkForm.value['name'] }}</p>
@@ -187,33 +90,69 @@
         <p>
           Performance-Score (mobile):
           <span [ngClass]="{
-          'text-success fw-bold': results.score >= 80,
-          'text-warning fw-bold': results.score >= 50 && results.score < 80,
-          'text-danger fw-bold': results.score < 50
-        }">
-            {{ results.score }} / 100
+            'text-success fw-bold': results.score >= 80,
+            'text-warning fw-bold': results.score >= 50 && results.score < 80,
+            'text-danger fw-bold': results.score < 50
+          }">
+            {{ results.score }}
           </span>
         </p>
 
         <h6 class="fw-semibold mb-2">Mobile Usability Checks:</h6>
         <div *ngFor="let check of results.checks" class="d-flex align-items-center mb-1">
           <span class="me-2" [ngClass]="{
-                'text-success': check.status === 'pass',
-                'text-danger': check.status === 'fail',
-                'text-info': check.status === 'info'
-              }">
+            'text-success': check.status === 'pass',
+            'text-danger': check.status === 'fail',
+            'text-info': check.status === 'info'
+          }">
             {{ check.status === 'pass' ? '✔' : check.status === 'fail' ? '❌' : 'ℹ' }}
           </span>
           {{ check.label }}
         </div>
 
-        <div *ngIf="results.apiUnavailable" class="alert alert-warning mt-3">
-          API results not available at the moment.
+        <div class="mt-3">
+          <button class="btn-cta btn-free" (click)="openDetail()" style="border: none;">
+            See Full Detail
+          </button>
         </div>
       </div>
     </div>
-  </div> -->
 
+    <div *ngIf="results && fullDetail" class="card shadow-sm mt-3">
+      <div class="card-body">
+        <h4>Domain: {{ results.submittedBy.domain }}</h4>
 
+        <h5>SSL Info</h5>
+        <p>Status: {{ results.ssl.status }}</p>
+        <p>Host: {{ results.ssl.host }}</p>
+        <p>Engine Version: {{ results.ssl.engineVersion }}</p>
+        <ul>
+          <li *ngFor="let endpoint of results.ssl.endpoints">
+            IP: {{ endpoint.ipAddress }} - Status: {{ endpoint.statusMessage }}
+          </li>
+        </ul>
 
+        <h5>Mozilla</h5>
+        <p>Error: {{ results.mozilla.error }}</p>
+
+        <h5>W3C</h5>
+        <p>URL: {{ results.w3c.url }}</p>
+        <ul>
+          <li *ngFor="let msg of results.w3c.messages">
+            Type: {{ msg.type }} | SubType: {{ msg.subType }} | Message: {{ msg.message }}
+          </li>
+        </ul>
+
+        <h5>PageSpeed</h5>
+        <p>Error: {{ results.pageSpeed.error }}</p>
+
+        <div class="mt-3">
+          <button class="btn-cta btn-free" (click)="generateReport()" style="border: none;">
+            Download Full Report
+          </button>
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>

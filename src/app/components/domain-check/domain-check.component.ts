@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DomainCheckService } from '../../services/domain-check.service';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, AsyncValidatorFn, ReactiveFormsModule } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { delay, map, catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import saveAs from 'file-saver';
 
 
 @Component({
@@ -20,8 +18,9 @@ export class DomainCheckComponent {
   results: any = null;
   checkForm!: FormGroup;
   submitted = false;
+  fullDetail: any;
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private service: DomainCheckService) { }
+  constructor(private fb: FormBuilder, private service: DomainCheckService) { }
 
   ngOnInit(): void {
     this.checkForm = this.fb.group({
@@ -43,20 +42,12 @@ export class DomainCheckComponent {
     });
   }
 
-  /** Async Validator: Simulates domain availability check */
-  private domainAsyncValidator(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      if (!control.value) return of(null);
+  openDetail() {
+    this.fullDetail = !this.fullDetail
+  }
 
-      // Example check: call a public API (here mocked with delay)
-      return this.http
-        .get(`https://api.ssllabs.com/api/v3/analyze?host=${control.value}`)
-        .pipe(
-          delay(1000), // simulate network delay
-          map(() => null), // if reachable → valid
-          catchError(() => of({ asyncExists: true })) // if unreachable → invalid
-        );
-    };
+  onReset() {
+    this.checkForm.reset()
   }
 
   /** Submit */
@@ -69,9 +60,7 @@ export class DomainCheckComponent {
 
     this.loading = true;
     this.results = null;
-    const payload: any = {domain: this.checkForm.value.domain };
-    // if (this.checkForm.value.name) payload.name = this.checkForm.value.name;
-    // if (this.checkForm.value.phone) payload.phone = this.checkForm.value.phone;
+    const payload: any = { domain: this.checkForm.value.domain };
 
     this.service.runChecks(payload).subscribe({
       next: (res) => {
@@ -79,46 +68,54 @@ export class DomainCheckComponent {
         this.loading = false;
       }
     })
-    setTimeout(() => {
-      this.loading = false;
-      this.results = {
-        score: 57, // demo
-        checks: [
-          { label: 'Viewport OK', status: 'pass' },
-          { label: 'Font-size check not available', status: 'info' },
-          { label: 'Tap-targets check not available', status: 'info' },
-          { label: 'Content-width check not available', status: 'info' },
-          { label: 'No responsive images', status: 'fail' }
-        ],
-        apiUnavailable: false
-      };
-    }, 2000);
   }
 
-  // Helper for easier access in template
   get f() {
     return this.checkForm.controls;
   }
 
 
   generateReport() {
-    const payload = {
-      // domain: this.domain,
-      // name: this.name,
-      // phone: this.phone,
+    const payload: any = {
+      submittedBy: {
+        domain: this.checkForm.value.domain,
+        name: this.checkForm.value.name,
+        phone: this.checkForm.value.phone,
+      },
+      ssl: {
+        host: this.results.ssl.host,
+        port: this.results.ssl.port,
+        protocol: this.results.ssl.protocol,
+        isPublic: this.results.ssl.isPublic,
+        status: this.results.ssl.status,
+        startTime: this.results.ssl.startTime,
+        engineVersion: this.results.ssl.engineVersion,
+        criteriaVersion: this.results.ssl.criteriaVersion,
+      },
+      w3c: {
+        url: this.results.w3c.url,
+        messages: [
+          {
+            type: this.results.w3c.messages[0].message,
+            url: this.results.w3c.messages[0].url,
+            subType: this.results.w3c.messages[0].subType,
+            message: this.results.w3c.messages[0].message
+          }
+        ]
+      },
       status: 'Passed with warnings',
       recommendations: ['Use optimized images', 'Minify JavaScript']
     };
 
-    // this.service.downloadReport(payload).subscribe((pdfBlob) => {
-    //   const blob = new Blob([pdfBlob], { type: 'application/pdf' });
-    //   const url = window.URL.createObjectURL(blob);
-
-    //   const a = document.createElement('a');
-    //   a.href = url;
-    //   a.download = 'website-report.pdf';
-    //   a.click();
-    //   window.URL.revokeObjectURL(url);
-    // });
+    this.service.downloadReport(payload).subscribe({
+      next: (pdfBlob: Blob) => {
+        saveAs(pdfBlob, 'website-report.pdf');
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Download failed', err);
+        this.loading = false;
+      }
+    });
   }
 }

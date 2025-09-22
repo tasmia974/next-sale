@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { HomeComponent } from "../home/home.component";
-import { ServicesComponent } from "../services/services.component";
-import { FaqsComponent } from "../faqs/faqs.component";
-import { ContactComponent } from "../contact/contact.component";
 
 @Component({
   selector: 'app-about-us',

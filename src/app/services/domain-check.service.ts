@@ -15,7 +15,7 @@ export class DomainCheckService {
     return this.http.post<any>(this.apiUrl, payload);
   }
 
-  downloadReport(payload: { domain: string; name: string; phone: string; status?: string; recommendations?: string[] }) {
+  downloadReport(payload: any) {
     return this.http.post(this.apiReport, payload, {
       responseType: 'blob'
     });
