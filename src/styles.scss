@@ -1,1 +1,579 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+
+.cta-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 424px;
+  margin: 0 auto;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+  border-radius: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 27.2px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-free {
+  background-color: #0077ff;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 12px 22px;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.btn-contact {
+  background-color: #ffffff;
+  color: #0a0915;
+  font-weight: 400;
+  border: 1px solid rgba(10, 9, 21, 0.1);
+  padding: 12px 16px 12px 24px;
+  gap: 12px;
+}
+
+.btn-icon {
+  width: 6px;
+  height: 12px;
+}
+
+.banner-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.banner-container {
+  position: relative;
+  max-width: 1075px;
+  width: 100%;
+  line-height: 0;
+}
+
+.banner-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+.scroll-button {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 10;
+  display: block;
+  text-decoration: none;
+  width: clamp(90px, 11.6vw, 125px);
+  height: clamp(90px, 11.6vw, 125px);
+  transition: transform 0.3s ease;
+}
+
+.scroll-icon-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-arrow {
+  position: relative;
+  /* To appear above the absolute-positioned background */
+  width: 28%;
+  /* (34.7px / 125px) * 100 */
+  height: auto;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  max-width: 856px;
+  margin: 0 auto;
+  // padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 76.8px;
+  letter-spacing: -4px;
+  color: #0a0915;
+  margin: 0;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 600;
+  /* Ensure italic variant weight is applied */
+}
+
+.hero-title .highlight {
+  color: rgb(0, 200, 150);
+}
+
+.hero-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30.6px;
+  letter-spacing: -0.8px;
+  color: #4b4a4c;
+  opacity: 0.8;
+  margin: 0;
+  max-width: 774px;
+  /* To match design line breaks */
+}
+
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+
+/* Base blurred circle style */
+.blur-shape {
+  position: absolute;
+  width: clamp(200px, 25vw, 500px);
+  height: clamp(200px, 25vw, 500px);
+  border-radius: 50%;
+  filter: blur(clamp(100px, 15vw, 220px));
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* Right side blur (#9ECF59) */
+.right-shape {
+  background: #94E4F1;
+  left: -40px;
+  top: 213px;
+}
+
+/* Left side blur (#94E4F1) */
+.left-shape {
+  background: #9ECF59;
+  left: 850px;
+  top: 221.87px;
+}
+
+.expertise-bg-shape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 428px;
+  height: 599.82px;
+  filter: blur(200px);
+  opacity: 0.4;
+  transform: rotate(180deg);
+  z-index: 0;
+  pointer-events: none;
+  background: #94E4F1;
+}
+
+.composition-container {
+  position: relative;
+  max-width: 718px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 62px;
+  aspect-ratio: 717.63 / 688.66;
+}
+
+.composition-container img {
+  position: absolute;
+  object-fit: cover;
+}
+
+.background-shape {
+  top: 0;
+  left: 0;
+  width: 59.64%;
+  /* 428 / 717.63 */
+  height: 87.10%;
+  /* 599.82 / 688.66 */
+  filter: blur(200px);
+  opacity: 0.7;
+  transform: rotate(180deg);
+  background: #94E4F1;
+}
+
+
+@media (max-width: 576px) {
+ .banner-section {
+    padding: 2px 10px;
+}
+
+  .left-shape {
+    left: 40%;
+    // top: 100px;
+  }
+
+  .hero-container {
+    padding-left: 10px;
+    gap: 0px;
+  }
+
+  .hero-title {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -2px;
+  }
+
+  .hero-subtitle {
+    margin: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: -0.8px;
+    opacity: 0.8;
+    text-align: center;
+    display: flex;
+  }
+
+  .experties-image {
+    // width: 349px;
+    width: 309px;
+    height: 264px;
+    border-radius: 15px;
+  }
+
+  .composition-container {
+    padding-left: 0px;
+  }
+
+  .expertise-bg-shape {
+    background: none;
+  }
+
+  .background-wave-container {
+    top: 779px !important;
+  }
+
+}
+
+
+
+/* 💻 Extra-large desktop adjustments (≥1920px and up to 6000px) */
+@media (min-width: 1920px) {
+  .right-shape {
+    left: -150px;
+    top: 300px;
+  }
+
+  .left-shape {
+    left: 70%;
+    top: 350px;
+  }
+}
+
+
+// #expertise {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding-top: 25px;
+// }
+
+.expertise-container {
+  max-width: 526px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  /* Calculated from Figma positions */
+}
+
+.expertise-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.expertise-title {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 1.2;
+  letter-spacing: -3.5px;
+  margin: 0;
+}
+
+.expertise-title em {
+  font-style: italic;
+}
+
+.expertise-title .highlight {
+  color: rgb(0, 200, 150);
+
+}
+
+.expertise-description {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.3;
+  opacity: 0.6;
+  margin: 0;
+  text-align: justify;
+}
+
+.expertise-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expertise-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  line-height: 1.7;
+  letter-spacing: -0.3px;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--text-primary);
+  border-radius: 56px;
+  flex-shrink: 0;
+}
+
+.icon-wrapper img {
+  width: 20px;
+  height: 20px;
+}
+
+.headline-container {
+  max-width: 843px;
+  margin: 0px auto;
+  padding: 0 20px;
+}
+
+.main-headline {
+  color: #0a0915;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1.3;
+  /* Corresponds to 62.4px */
+  letter-spacing: -2px;
+  text-align: center;
+  margin: 0;
+}
+
+.main-headline .italic-text {
+  font-style: italic;
+}
+
+.main-headline .highlight-text {
+  color: #0077ff;
+  /* rgba(0, 119, 255, 1) */
+}
+
+@media (max-width: 480px) {
+  #image-composition {
+    margin: 9px;
+  }
+
+  .cta-container {
+    flex-wrap: nowrap;
+    padding-bottom: 20px;
+  }
+  .main-headline {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .btn-cta {
+   font-size: 14px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .expertise-title {
+    font-size: 28px;
+  }
+
+  .expertise-description {
+    font-size: 15px;
+  }
+
+  .expertise-item {
+    font-size: 16px;
+  }
+
+  .scroll-bg {
+    top: -11px;
+    left: 19px;
+  }
+
+  .scroll-icon-wrapper {
+    width: 58%;
+    height: 187%;
+  }
+
+  .scroll-arrow {
+    left: 18px;
+    padding-bottom: 15px;
+  }
+
+  .problem-solution-section {
+    padding: 0 !important;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center !important;
+    gap: 30px !important;
+    margin-bottom: 82px !important;
+  }
+
+  .info-card {
+    width: 371px !important;
+    padding: 20px !important;
+  }
+
+  .center-image {
+    width: 357px !important;
+  }
+
+}
+
+
+
+
+/* CSS from section:problem-solution */
+.problem-solution-section {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.background-wave-container {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  // height: 100%;
+  z-index: 0;
+}
+
+.background-wave {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 200px;
+}
+
+.info-card {
+  background-color: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 24px;
+  box-shadow: 0px 0px 80px 4px rgba(0, 0, 0, 0.06);
+  padding: 32px;
+  width: 336px;
+  box-sizing: border-box;
+  // margin-top: 26px;
+}
+
+.problem-card {
+  padding-top: 20px;
+  margin-top: 26px;
+}
+
+.solution-card {
+  padding-top: 36px;
+}
+
+.card-title {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.3;
+  margin: 0 0 20px 0;
+}
+
+.card-title-problem {
+  color: #f66666 !important;
+}
+
+.card-title-solution {
+  color: #00c896 !important;
+}
+
+.card-description {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #102d23;
+  opacity: 0.8;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
+.center-image-wrapper {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.center-image {
+  display: block;
+  width: 336px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: inset 0px -4px 0px 0px rgba(0, 0, 0, 0.15);
+}

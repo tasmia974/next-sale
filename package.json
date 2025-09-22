@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:ssr": "ng build && ng run next-sale:server",
+    "serve:ssr": "node dist/next-sale/server/main.js"
   },
   "private": true,
   "dependencies": {
@@ -18,7 +20,15 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@nguniversal/express-engine": "^16.2.0",
+    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/http-loader": "^17.0.0",
+    "bootstrap": "^5.3.8",
+    "cors": "^2.8.5",
+    "node-fetch": "^3.3.2",
+    "pdfkit": "^0.17.2",
     "rxjs": "~7.8.0",
+    "sass": "^1.92.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },
@@ -26,7 +36,10 @@
     "@angular-devkit/build-angular": "^18.2.21",
     "@angular/cli": "^18.2.21",
     "@angular/compiler-cli": "^18.2.0",
+    "@angular/localize": "^18.2.14",
+    "@angular/ssr": "^20.3.1",
     "@types/jasmine": "~5.1.0",
+    "@types/pdfkit": "^0.17.3",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

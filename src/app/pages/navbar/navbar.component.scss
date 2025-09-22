@@ -1,0 +1,260 @@
+.header-container {
+  padding: 20px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 11px 17px;
+  background-color: #ffffff;
+  border: 1px solid #edecef;
+  border-radius: 20px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 39.5px;
+  height: 45.5px;
+}
+
+.logo-text {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
+  color: #1a1a1a;
+  letter-spacing: -1.5px;
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 25px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-link {
+  font-size: 18px;
+  font-weight: 400;
+  color: #0a0915;
+  opacity: 0.6;
+  letter-spacing: -0.4px;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+.nav-link.active {
+  font-weight: 500;
+  color: #0a0915;
+  opacity: 1;
+  letter-spacing: -0.2px;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 4.5px;
+  cursor: pointer;
+}
+
+.lang-flag {
+  width: 17.64px;
+  height: 17.64px;
+  border: 1px solid #0077ff;
+  border-radius: 50%;
+}
+
+.lang-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #6c6b73;
+  line-height: 26px;
+}
+
+.lang-arrow {
+  width: 8px;
+  height: 4px;
+}
+
+.cta-button {
+  padding: 12px 24.5px;
+  background-color: #0077ff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 27.2px;
+  letter-spacing: -0.4px;
+  border-radius: 16px;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.03);
+  white-space: nowrap;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #0a0915;
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1100px) {
+  .main-nav {
+    display: none;
+  }
+
+  .header-controls {
+    gap: 15px;
+    padding-left: 77px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 10px 15px;
+    border-radius: 0px;
+    background-color: unset;
+    border-bottom: 1px solid #EDECEF;
+    box-shadow: none;
+  }
+
+  .display {
+    display: none;
+  }
+
+  .header-container {
+    padding: 0px;
+  }
+
+  .lang-text {
+    font-weight: 500;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 67px;
+    right: 2px;
+    width: 100%;
+    max-width: 373px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    z-index: 999;
+  }
+
+  .main-nav.open {
+    display: block;
+  }
+
+  .main-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-nav li {
+    text-align: left;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 6px;
+    color: #333;
+    transition: background 0.2s;
+  }
+
+  .main-nav a:hover {
+    background: #f5f5f5;
+  }
+   .mobile-nav {
+    display: block;
+  }
+}
+
+
+
+/* =============================
+   Mobile Navigation
+============================= */
+.mobile-nav {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  li {
+    text-align: left;
+  }
+
+  a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 6px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  a:hover {
+    background: #f5f5f5;
+  }
+}
+
+.mobile-nav.open {
+  max-height: 500px;
+  opacity: 1;
+}

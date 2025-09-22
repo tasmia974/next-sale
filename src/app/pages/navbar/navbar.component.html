@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col">
+    <section id="header">
+      <div class="header-container">
+        <header class="site-header">
+          <a href="#" class="logo">
+            <img src="assets/img/icon.svg" alt="Next Sale Developing logo icon" class="logo-icon">
+            <span class="logo-text">Next Sale<br>Developing</span>
+          </a>
+
+          <nav class="main-nav">
+            <ul>
+              <li><a class="nav-link active" routerLink="/" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+              <li><a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a></li>
+              <li><a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a></li>
+              <li><a class="nav-link" routerLink="/faq" routerLinkActive="active">FAQ</a></li>
+              <li><a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="header-controls">
+            <div class="language-selector">
+              <img src="assets/img/eng.svg" alt="Language flag" class="lang-flag">
+              <span class="lang-text">GER</span>
+              <img src="assets/img/arrowDown.svg" alt="Dropdown arrow" class="lang-arrow">
+            </div>
+            <span class="display"><a routerLink="/domain-check" class="btn-cta btn-free">Start Website Test</a></span>
+          </div>
+          <button class="hamburger-menu" aria-label="Toggle menu" (click)="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="main-nav mobile-nav" [class.open]="isMenuOpen">
+  <ul>
+    <li><a routerLink="/" routerLinkActive="active" (click)="closeMenu()" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+    <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About Us</a></li>
+    <li><a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">Services</a></li>
+    <li><a routerLink="/faq" routerLinkActive="active" (click)="closeMenu()">FAQ</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+  </ul>
+</nav>
