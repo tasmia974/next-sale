@@ -55,7 +55,29 @@ export class DomainCheckComponent {
       name: this.results.submittedBy.name,
       phone: this.results.submittedBy.phone,
       status: this.results.ssl?.status || 'N/A',
-      recommendations: []
+      recommendations: {
+         ssl: {
+        host: this.results.ssl.host,
+        port: this.results.ssl.port,
+        protocol: this.results.ssl.protocol,
+        isPublic: this.results.ssl.isPublic,
+        status: this.results.ssl.status,
+        startTime: this.results.ssl.startTime,
+        engineVersion: this.results.ssl.engineVersion,
+        criteriaVersion: this.results.ssl.criteriaVersion,
+      },
+      w3c: {
+        url: this.results.w3c.url,
+        messages: [
+          {
+            type: this.results.w3c.messages[0].message,
+            url: this.results.w3c.messages[0].url,
+            subType: this.results.w3c.messages[0].subType,
+            message: this.results.w3c.messages[0].message
+          }
+        ]
+      },
+      }
     };
     this.api.downloadReport(payload).subscribe({
       next: (res) => {
@@ -68,4 +90,3 @@ export class DomainCheckComponent {
     });
   }
 }
-

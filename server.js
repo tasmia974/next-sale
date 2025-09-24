@@ -227,8 +227,40 @@ app.post('/api/report', cors({ origin: allowedOrigins }), pdfLimiter, (req, res)
     doc.fontSize(12).text(status || 'N/A');
     doc.moveDown();
 
-    doc.fontSize(14).text('Top Recommendations', { underline: true });
-    (Array.isArray(recommendations) ? recommendations : []).forEach((r, i) => doc.text(`${i + 1}. ${r}`));
+    // --- SSL Section ---
+    if (recommendations?.ssl) {
+      doc.moveDown().fontSize(14).text("SSL Information", { underline: true });
+      const ssl = recommendations.ssl;
+      doc.fontSize(12)
+        .text(`Host: ${ssl.host || "N/A"}`)
+        .text(`Port: ${ssl.port || "N/A"}`)
+        .text(`Protocol: ${ssl.protocol || "N/A"}`)
+        .text(`Public: ${ssl.isPublic ? "Yes" : "No"}`)
+        .text(`Status: ${ssl.status || "N/A"}`)
+        .text(`Start Time: ${ssl.startTime || "N/A"}`)
+        .text(`Engine Version: ${ssl.engineVersion || "N/A"}`)
+        .text(`Criteria Version: ${ssl.criteriaVersion || "N/A"}`);
+    }
+
+    // --- W3C Section ---
+    if (recommendations?.w3c) {
+      doc.moveDown().fontSize(14).text("W3C Validation", { underline: true });
+      doc.fontSize(12).text(`URL: ${recommendations.w3c.url || "N/A"}`);
+
+      if (Array.isArray(recommendations.w3c.messages) && recommendations.w3c.messages.length > 0) {
+        doc.moveDown().fontSize(12).text("Messages:");
+        recommendations.w3c.messages.forEach((msg, idx) => {
+          doc.text(
+            `${idx + 1}. [${msg.type || "N/A"}] ${msg.message || "N/A"} (${msg.subType || "-"})`
+          );
+          if (msg.url) {
+            doc.text(`   → ${msg.url}`);
+          }
+        });
+      } else {
+        doc.text("No validation messages.");
+      }
+    }
 
     // Footer (page)
     const addFooter = () => {
