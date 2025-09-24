@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable, throwError, timeout, catchError } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { ChecksResult } from '../models/check-results.model';
 
 @Injectable({ providedIn: 'root' })
 export class DomainCheckService {
+  private base = environment.apiBaseUrl;
 
-  @Injectable({ providedIn: 'root' })
-  private apiUrl = "api/checks/run";
-  private apiReport = "/api/report";
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  runChecks(payload: { domain: string; name?: string; phone?: string }): Observable<any> {
-    return this.http.post<any>(this.apiUrl, payload);
+  runChecks(domain: string, name?: string, phone?: string): Observable<ChecksResult> {
+    return this.http.post<ChecksResult>(`${this.base}/checks/run`, { domain, name, phone })
+      .pipe(timeout(20000), catchError(this.handleError));
   }
 
-  downloadReport(payload: any) {
-    return this.http.post(this.apiReport, payload, {
-      responseType: 'blob'
-    });
+  validateDomain(domain: string): Observable<{ valid: boolean }> {
+    return this.http.post<{ valid: boolean }>(`${this.base}/validate-domain`, { domain })
+      .pipe(timeout(5000), catchError(this.handleError));
   }
 
+  downloadReport(payload: any): Observable<HttpResponse<Blob>> {
+    return this.http.post(`${this.base}/report`, payload, { responseType: 'blob', observe: 'response' })
+      .pipe(timeout(30000), catchError(this.handleError));
+  }
+
+  private handleError(err: any) {
+    let msg = 'Server error';
+    if (err?.name === 'TimeoutError') msg = 'Request timed out';
+    else if (err?.error?.error) msg = err.error.error;
+    else if (err?.message) msg = err.message;
+    return throwError(() => new Error(msg));
+  }
 }

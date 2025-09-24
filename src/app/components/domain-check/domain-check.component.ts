@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DomainCheckService } from '../../services/domain-check.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import saveAs from 'file-saver';
+import { ChecksResult } from '../../models/check-results.model';
+import { domainAsyncValidator } from '../../models/domain-check-validation';
 
 
 @Component({
@@ -14,108 +16,56 @@ import saveAs from 'file-saver';
   styleUrls: ['./domain-check.component.scss']
 })
 export class DomainCheckComponent {
-  loading = false;
-  results: any = null;
-  checkForm!: FormGroup;
+  checkForm: FormGroup;
   submitted = false;
-  fullDetail: any;
+  loading = false;
+  results: ChecksResult | null = null;
+  message: string | null = null;
 
-  constructor(private fb: FormBuilder, private service: DomainCheckService) { }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private api: DomainCheckService) {
     this.checkForm = this.fb.group({
-      domain: [
-        '',
-        [
-          Validators.required,
-        ],
-      ],
+      domain: ['', [
+        Validators.required,
+        Validators.pattern(/^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/i)
+      ], [domainAsyncValidator(this.api)]],
       name: ['', [Validators.required, Validators.minLength(2)]],
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/^\+?[0-9\s\-]{7,15}$/)
-        ]
-      ],
+      phone: ['', [Validators.required, Validators.pattern(/^[+0-9\s\-()]{6,}$/)]],
       spamProtection: [false, Validators.requiredTrue]
     });
   }
 
-  openDetail() {
-    this.fullDetail = !this.fullDetail
-  }
+  get f() { return this.checkForm.controls; }
 
-  onReset() {
-    this.checkForm.reset()
-  }
-
-  /** Submit */
-  onSubmit(): void {
+  onSubmit() {
     this.submitted = true;
-
-    if (this.checkForm.invalid) {
-      return;
-    }
-
+    this.message = null;
+    if (this.checkForm.invalid) return;
     this.loading = true;
-    this.results = null;
-    const payload: any = { domain: this.checkForm.value.domain };
-
-    this.service.runChecks(payload).subscribe({
-      next: (res) => {
-        this.results = res;
-        this.loading = false;
-      }
-    })
+    const { domain, name, phone } = this.checkForm.value;
+    this.api.runChecks(domain, name, phone).subscribe({
+      next: (res) => { this.results = res; this.loading = false; },
+      error: (err) => { this.message = err.message || 'Unexpected error'; this.loading = false; }
+    });
   }
 
-  get f() {
-    return this.checkForm.controls;
-  }
-
-
-  generateReport() {
-    const payload: any = {
-      submittedBy: {
-        domain: this.checkForm.value.domain,
-        name: this.checkForm.value.name,
-        phone: this.checkForm.value.phone,
-      },
-      ssl: {
-        host: this.results.ssl.host,
-        port: this.results.ssl.port,
-        protocol: this.results.ssl.protocol,
-        isPublic: this.results.ssl.isPublic,
-        status: this.results.ssl.status,
-        startTime: this.results.ssl.startTime,
-        engineVersion: this.results.ssl.engineVersion,
-        criteriaVersion: this.results.ssl.criteriaVersion,
-      },
-      w3c: {
-        url: this.results.w3c.url,
-        messages: [
-          {
-            type: this.results.w3c.messages[0].message,
-            url: this.results.w3c.messages[0].url,
-            subType: this.results.w3c.messages[0].subType,
-            message: this.results.w3c.messages[0].message
-          }
-        ]
-      },
-      status: 'Passed with warnings',
-      recommendations: ['Use optimized images', 'Minify JavaScript']
+  onDownloadReport() {
+    if (!this.results) return;
+    const payload = {
+      domain: this.results.submittedBy.domain,
+      name: this.results.submittedBy.name,
+      phone: this.results.submittedBy.phone,
+      status: this.results.ssl?.status || 'N/A',
+      recommendations: [] // build server-side or from rules
     };
-
-    this.service.downloadReport(payload).subscribe({
-      next: (pdfBlob: Blob) => {
-        saveAs(pdfBlob, 'website-report.pdf');
-        this.loading = false;
+    this.api.downloadReport(payload).subscribe({
+      next: (res) => {
+        const cd = res.headers.get('content-disposition') || '';
+        const match = /filename="?([^"]+)"?/.exec(cd);
+        const filename = match ? match[1] : `${payload.domain}-report.pdf`;
+        saveAs(res.body!, filename);
       },
-      error: (err) => {
-        console.error('Download failed', err);
-        this.loading = false;
-      }
+      error: (err) => { this.message = err.message || 'Failed to download report'; }
     });
   }
 }
+
