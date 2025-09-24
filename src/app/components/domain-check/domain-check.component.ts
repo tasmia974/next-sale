@@ -55,7 +55,7 @@ export class DomainCheckComponent {
       name: this.results.submittedBy.name,
       phone: this.results.submittedBy.phone,
       status: this.results.ssl?.status || 'N/A',
-      recommendations: [] // build server-side or from rules
+      recommendations: []
     };
     this.api.downloadReport(payload).subscribe({
       next: (res) => {
