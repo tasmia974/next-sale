@@ -1,6 +1,9 @@
 @import "bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
 
 .cta-container {
   display: flex;
@@ -183,7 +186,7 @@
 /* Left side blur (#94E4F1) */
 .left-shape {
   background: #9ECF59;
-  left: 850px;
+  left: 745px;
   top: 221.87px;
 }
 
@@ -433,9 +436,10 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
- .expertise-title {
+  .expertise-title {
     font-size: 38px !important;
   }
+
   .right-shape {
     left: 15px;
     top: 300px;
@@ -454,7 +458,7 @@
     bottom: 26px;
   }
 
-  .main-headline{
+  .main-headline {
     font-size: 38px;
   }
 
@@ -554,21 +558,22 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-   .right-shape {
+  .right-shape {
     left: 5px;
   }
 
   .left-shape {
-    left: 190px;
+    left: 135px;
   }
+
   #image-composition {
     margin: 9px;
   }
 
   .hero-title {
-    font-size: 30px;
+    font-size: 38px;
     line-height: 43px;
-    letter-spacing: 1px;
+    letter-spacing: -3px;
     font-family: "Be Vietnam Pro", sans-serif;
   }
 
@@ -602,14 +607,19 @@
     font-size: 16px;
   }
 
+  .scroll-button {
+    bottom: 37px;
+    left: 51%;
+  }
+
   .scroll-bg {
     top: -11px;
     left: 19px;
   }
 
   .scroll-icon-wrapper {
-    width: 58%;
-    height: 187%;
+    width: 49%;
+    height: 181%;
   }
 
   .scroll-arrow {
@@ -649,5 +659,35 @@
   .left-shape {
     left: 70%;
     top: 350px;
+  }
+}
+
+@media (max-width: 320px) {
+  .scroll-button {
+    bottom: 34px;
+    left: 52%;
+  }
+
+  .scroll-icon-wrapper {
+    width: 44%;
+    height: 181%;
+  }
+
+  .hero-title {
+    font-size: 31px;
+  }
+
+  .expertise-title {
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+
+  .main-headline {
+    font-size: 20px;
+  }
+
+  .left-shape {
+    left: 98px;
   }
 }

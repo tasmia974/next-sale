@@ -1,5 +1,5 @@
 <section id="header">
-  <div class="header-container">
+  <div class="header-container fixed-top">
     <header class="site-header">
       <a href="#" class="logo">
         <img src="assets/img/icon.svg" alt="Next Sale Developing logo icon" class="logo-icon">
@@ -8,14 +8,18 @@
 
       <nav class="main-nav">
         <ul>
-          <li><a class="nav-link active" routerLink="/" routerLinkActive="active"
+          <li><a class="nav-link active" routerLink="/" routerLinkActive="active" fragment="home"
               [routerLinkActiveOptions]="{ exact: true }">{{ 'Home' | translate }}</a></li>
-          <li><a class="nav-link" routerLink="/about" routerLinkActive="active">{{ 'About us' | translate }}</a>
+          <li><a class="nav-link" routerLink="/about" routerLinkActive="active" fragment="about">{{ 'About us' |
+              translate }}</a>
           </li>
-          <li><a class="nav-link" routerLink="/services" routerLinkActive="active">{{ 'Services' | translate }}</a>
+          <li><a class="nav-link" routerLink="/services" routerLinkActive="active" fragment="services">{{ 'Services' |
+              translate }}</a>
           </li>
-          <li><a class="nav-link" routerLink="/faq" routerLinkActive="active">{{ 'FAQ' | translate }}</a></li>
-          <li><a class="nav-link" routerLink="/contact" routerLinkActive="active">{{ 'Contact' | translate }}</a>
+          <li><a class="nav-link" routerLink="/faq" routerLinkActive="active" fragment="faq">{{ 'FAQ' | translate }}</a>
+          </li>
+          <li><a class="nav-link" routerLink="/contact" routerLinkActive="active" fragment="contact">{{ 'Contact' |
+              translate }}</a>
           </li>
         </ul>
       </nav>
@@ -57,11 +61,11 @@
 
 <nav class="main-nav mobile-nav" [class.open]="isMenuOpen">
   <ul>
-    <li><a routerLink="/" routerLinkActive="active" (click)="closeMenu()"
-        [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-    <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About Us</a></li>
-    <li><a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">Services</a></li>
-    <li><a routerLink="/faq" routerLinkActive="active" (click)="closeMenu()">FAQ</a></li>
-    <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+    <li><a routerLink="/" routerLinkActive="active" (click)="closeMenu()" [routerLinkActiveOptions]="{ exact: true }"
+        fragment="home">Home</a></li>
+    <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()" fragment="about">About Us</a></li>
+    <li><a routerLink="/services" routerLinkActive="active" (click)="closeMenu()" fragment="services">Services</a></li>
+    <li><a routerLink="/faq" routerLinkActive="active" (click)="closeMenu()" fragment="faq">FAQ</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()" fragment="contact">Contact</a></li>
   </ul>
 </nav>
