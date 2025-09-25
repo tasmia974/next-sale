@@ -225,7 +225,7 @@ p {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .footer-contact {
     display: none !important;
   }
@@ -239,6 +239,8 @@ p {
     min-width: unset;
     display: flex;
     text-align: start;
+    margin-top: 22px;
+    font-family: 'Poppins';
   }
 
   .newsletter-description,
@@ -250,6 +252,7 @@ p {
     padding-top: 0px;
     padding-bottom: 0px;
     padding: 16px;
+    font-family: 'Poppins';
   }
 
   .newsletter-content {
@@ -258,10 +261,9 @@ p {
 
   .social-links-mob {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    margin-top: 20px;
-    margin-left: 84px;
+    margin-bottom: 20px;
   }
 
   .social-links-mob a {
@@ -285,5 +287,10 @@ p {
     width: 20px;
     height: 20px;
   }
+}
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer-section {
+    padding: 50px;
+  }
 }

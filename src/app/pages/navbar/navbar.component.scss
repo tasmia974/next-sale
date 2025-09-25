@@ -145,6 +145,17 @@
   .header-controls {
     gap: 15px;
   }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .display {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {
@@ -212,7 +223,8 @@
   .main-nav a:hover {
     background: #f5f5f5;
   }
-   .mobile-nav {
+
+  .mobile-nav {
     display: block;
   }
 }

@@ -1,46 +1,42 @@
-<div class="container margin-top">
-  <section class="faq-intro-section">
-    <div class="faq-intro-container">
-      <h2 class="faq-intro-title">Frequently asked questions</h2>
-      <p class="faq-intro-subtitle">Ask everything you need to know about our products and services.</p>
+<section class="faq-section">
+  <div class="container">
+    <div class="hero-container mb-5">
+      <h2 class="faq-intro-title text-center">Frequently asked questions</h2>
+      <p class="faq-intro-subtitle text-center">Ask everything you need to know about our products and services.</p>
     </div>
-  </section>
-  <div class="ellipse-divider-left"></div>
-  <section id="faq">
-    <div class="faq-container">
-      @if (faqs$ | async; as faqs) {
-      @for (faq of faqs; track faq.question) {
-      <details class="faq-item" [open]="faq.open">
-        <summary class="faq-question">
-          <h3 class="faq-title">{{ faq.question }}</h3>
-          <div class="faq-icon-wrapper">
-            <img src="assets/img/plus.svg" alt="Expand" class="icon-plus">
-            <img src="assets/img/minus.svg" alt="Collapse" class="icon-minus">
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item" *ngFor="let item of faqs; let i = index">
+        <details class="faq-item" [open]="item.open">
+          <summary class="faq-question">
+            <h3 class="faq-title"> {{ item.question }}</h3>
+            <div class="faq-icon-wrapper">
+              <img src="assets/img/plus.svg" alt="Expand" class="icon-plus">
+              <img src="assets/img/minus.svg" alt="Collapse" class="icon-minus">
+            </div>
+          </summary>
+          <div class="faq-answer">
+            {{ item.answer }}
           </div>
-        </summary>
-        <div class="faq-answer">
-          <p>{{ faq.answer }}</p>
-        </div>
-      </details>
-      }
-      }
-    </div>
-
-  </section>
-  <div class="ellipse-divider-blue-bottom"></div>
-  <div class="ellipse-divider"></div>
-</div>
-
-
-<section id="cta-banner">
-  <div class="cta-test-container">
-    <div class="cta-card">
-      <img src="assets/img/rightStar.svg" class="splash splash-1">
-      <img src="assets/img/leftStar.svg" class="splash splash-2">
-      <div class="cta-content">
-        <h2 class="cta-title">Test Your Website Today – Start Growing Tomorrow</h2>
-        <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
+        </details>
       </div>
     </div>
   </div>
 </section>
+
+<div class="ellipse-divider-blue-bottom"></div>
+<div class="ellipse-divider"></div>
+
+<div class="container">
+  <section id="cta-banner">
+    <div class="cta-test-container">
+      <div class="cta-card">
+        <img src="assets/img/rightStar.svg" class="splash splash-1">
+        <img src="assets/img/leftStar.svg" class="splash splash-2">
+        <div class="cta-content">
+          <h2 class="cta-title">Test Your Website Today – Start Growing Tomorrow</h2>
+          <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

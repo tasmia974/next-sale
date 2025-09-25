@@ -5,3 +5,10 @@ export interface ServiceCard {
   bgIcon: string;
   gap: string;
 }
+
+export interface Steps {
+  title: string;
+  description: string;
+  number: number;
+  cta: any;
+}

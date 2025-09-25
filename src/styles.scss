@@ -229,93 +229,12 @@
 }
 
 
-@media (max-width: 576px) {
-  .banner-section {
-    padding: 2px 10px;
-  }
-
-  .left-shape {
-    left: 40%;
-    // top: 100px;
-  }
-
-  .hero-container {
-    padding-left: 10px;
-    gap: 0px;
-  }
-
-  .hero-title {
-    margin: 0;
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 600;
-    font-size: 27px;
-    line-height: 1.2;
-    letter-spacing: -2px;
-  }
-
-  .hero-subtitle {
-    margin: 14px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.7;
-    letter-spacing: -0.8px;
-    opacity: 0.8;
-    text-align: center;
-    display: flex;
-  }
-
-  .experties-image {
-    // width: 349px;
-    width: 309px;
-    height: 264px;
-    border-radius: 15px;
-  }
-
-  .composition-container {
-    padding-left: 0px;
-  }
-
-  .expertise-bg-shape {
-    background: none;
-  }
-
-  .background-wave-container {
-    top: 779px !important;
-  }
-
-}
-
-
-
-/* 💻 Extra-large desktop adjustments (≥1920px and up to 6000px) */
-@media (min-width: 1920px) {
-  .right-shape {
-    left: -150px;
-    top: 300px;
-  }
-
-  .left-shape {
-    left: 70%;
-    top: 350px;
-  }
-}
-
-
-// #expertise {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding-top: 25px;
-// }
-
 .expertise-container {
   max-width: 526px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 22px;
-  /* Calculated from Figma positions */
 }
 
 .expertise-content {
@@ -413,9 +332,244 @@
   /* rgba(0, 119, 255, 1) */
 }
 
-@media (max-width: 480px) {
+
+/* CSS from section:problem-solution */
+.problem-solution-section {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.background-wave-container {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  // height: 100%;
+  z-index: 0;
+}
+
+.background-wave {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 200px;
+}
+
+.info-card {
+  background-color: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 24px;
+  box-shadow: 0px 0px 80px 4px rgba(0, 0, 0, 0.06);
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.problem-card {
+  padding-top: 20px;
+  margin-top: 26px;
+}
+
+.solution-card {
+  padding-top: 36px;
+}
+
+.card-title {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.3;
+  margin: 0 0 20px 0;
+}
+
+.card-title-problem {
+  color: #f66666 !important;
+}
+
+.card-title-solution {
+  color: #00c896 !important;
+}
+
+.card-description {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #102d23;
+  opacity: 0.8;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
+.center-image-wrapper {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.center-image {
+  display: block;
+  width: 336px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: inset 0px -4px 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .composition-container {
+    padding-left: 17px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+ .expertise-title {
+    font-size: 38px !important;
+  }
+  .right-shape {
+    left: 15px;
+    top: 300px;
+  }
+
+  .left-shape {
+    left: 70%;
+    top: 300px;
+  }
+
+  .expertise-title {
+    font-size: 30px;
+  }
+
+  .scroll-button {
+    bottom: 26px;
+  }
+
+  .main-headline{
+    font-size: 38px;
+  }
+
+  .expertise-description {
+    font-size: 16px !important;
+  }
+
+  .expertise-list {
+    gap: 0px;
+  }
+
+  .composition-container {
+    padding-left: 0px;
+    padding-top: 75px;
+  }
+
+  .background-wave-container {
+    top: 259px !important;
+  }
+
+  .info-card {
+    width: 275px !important;
+  }
+
+  .problem-card {
+    padding-top: 33px !important;
+    margin-top: 0px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  // @media (max-width: 576px) {
+  .banner-section {
+    padding: 2px 10px;
+  }
+
+  .left-shape {
+    left: 40%;
+  }
+
+  .hero-container {
+    padding-left: 10px;
+    gap: 0px;
+  }
+
+  .hero-title {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -2px;
+  }
+
+  .hero-subtitle {
+    margin: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: -0.8px;
+    opacity: 0.8;
+    text-align: center;
+    display: flex;
+  }
+
+  .experties-image {
+    // width: 349px;
+    width: 309px;
+    height: 264px;
+    border-radius: 15px;
+  }
+
+  .composition-container {
+    padding-left: 0px;
+  }
+
+  .expertise-bg-shape {
+    background: none;
+  }
+
+  .background-wave-container {
+    top: 779px !important;
+  }
+
+  .scroll-button {
+    bottom: 10px;
+    left: 51.5%;
+  }
+
+  .scroll-icon-wrapper {
+    width: 84%;
+    height: 84%;
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+   .right-shape {
+    left: 5px;
+  }
+
+  .left-shape {
+    left: 190px;
+  }
   #image-composition {
     margin: 9px;
+  }
+
+  .hero-title {
+    font-size: 30px;
+    line-height: 43px;
+    letter-spacing: 1px;
+    font-family: "Be Vietnam Pro", sans-serif;
   }
 
   .cta-container {
@@ -483,103 +637,17 @@
     width: 357px !important;
   }
 
+  // }
 }
 
-
-@media (min-width: 1200px) {
-  .left-shape {
-    left: 771px;
+@media (min-width: 1920px) {
+  .right-shape {
+    left: -150px;
+    top: 300px;
   }
-}
 
-/* CSS from section:problem-solution */
-.problem-solution-section {
-  position: relative;
-  width: 100%;
-  padding: 60px 0;
-  overflow: hidden;
-}
-
-.background-wave-container {
-  position: absolute;
-  top: 180px;
-  left: 0;
-  // height: 100%;
-  z-index: 0;
-}
-
-.background-wave {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
-.content-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 32px;
-  margin-bottom: 200px;
-}
-
-.info-card {
-  background-color: #ffffff;
-  border: 1px solid #e7e7e7;
-  border-radius: 24px;
-  box-shadow: 0px 0px 80px 4px rgba(0, 0, 0, 0.06);
-  padding: 32px;
-  width: 336px;
-  box-sizing: border-box;
-  // margin-top: 26px;
-}
-
-.problem-card {
-  padding-top: 20px;
-  margin-top: 26px;
-}
-
-.solution-card {
-  padding-top: 36px;
-}
-
-.card-title {
-  font-family: 'Be Vietnam Pro', sans-serif;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 1.3;
-  margin: 0 0 20px 0;
-}
-
-.card-title-problem {
-  color: #f66666 !important;
-}
-
-.card-title-solution {
-  color: #00c896 !important;
-}
-
-.card-description {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #102d23;
-  opacity: 0.8;
-  margin: 0;
-  letter-spacing: -0.4px;
-}
-
-.center-image-wrapper {
-  position: relative;
-  z-index: 10;
-  flex-shrink: 0;
-}
-
-.center-image {
-  display: block;
-  width: 336px;
-  height: auto;
-  border-radius: 24px;
-  box-shadow: inset 0px -4px 0px 0px rgba(0, 0, 0, 0.15);
+  .left-shape {
+    left: 70%;
+    top: 350px;
+  }
 }

@@ -46,7 +46,7 @@
   content: "";
   position: absolute;
   top: -120px;
-  left: 90%;
+  left: 73%;
   transform: translateX(-50%);
   width: 300px;
   height: 100px;
@@ -203,9 +203,6 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  body {
-    padding: 10px;
-  }
 
   .faq-question {
     padding: 24px 20px 16px;
@@ -222,6 +219,11 @@
   }
 }
 
+@media (min-width: 992px) {
+    .container{
+      // max-width: 910px;
+    }
+}
 
 #cta-banner {
   display: flex;

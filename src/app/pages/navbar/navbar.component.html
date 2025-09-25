@@ -1,62 +1,59 @@
-<div class="row">
-  <div class="col">
-    <section id="header">
-      <div class="header-container">
-        <header class="site-header">
-          <a href="#" class="logo">
-            <img src="assets/img/icon.svg" alt="Next Sale Developing logo icon" class="logo-icon">
-            <span class="logo-text">Next Sale<br>Developing</span>
-          </a>
+<section id="header">
+  <div class="header-container">
+    <header class="site-header">
+      <a href="#" class="logo">
+        <img src="assets/img/icon.svg" alt="Next Sale Developing logo icon" class="logo-icon">
+        <span class="logo-text">Next Sale<br>Developing</span>
+      </a>
 
-          <nav class="main-nav">
-            <ul>
-              <li><a class="nav-link active" routerLink="/" routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }">{{ 'Home' | translate }}</a></li>
-              <li><a class="nav-link" routerLink="/about" routerLinkActive="active">{{ 'About us' | translate }}</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a class="nav-link active" routerLink="/" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">{{ 'Home' | translate }}</a></li>
+          <li><a class="nav-link" routerLink="/about" routerLinkActive="active">{{ 'About us' | translate }}</a>
+          </li>
+          <li><a class="nav-link" routerLink="/services" routerLinkActive="active">{{ 'Services' | translate }}</a>
+          </li>
+          <li><a class="nav-link" routerLink="/faq" routerLinkActive="active">{{ 'FAQ' | translate }}</a></li>
+          <li><a class="nav-link" routerLink="/contact" routerLinkActive="active">{{ 'Contact' | translate }}</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <div class="header-controls">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle d-flex align-items-center language-selector" type="button"
+              id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <img [src]="selectedLang.flag" alt="Language flag" class="lang-flag me-2">
+              <span class="lang-text">{{ selectedLang.label }}</span>
+            </button>
+
+            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+              @for (lang of languages; track lang.code) {
+              <li>
+                <a class="dropdown-item d-flex align-items-center" (click)="switchLanguage(lang.code)">
+                  <img [src]="lang.flag" alt="flag" class="lang-flag me-2">
+                  <span>{{ lang.label }}</span>
+                </a>
               </li>
-              <li><a class="nav-link" routerLink="/services" routerLinkActive="active">{{ 'Services' | translate }}</a>
-              </li>
-              <li><a class="nav-link" routerLink="/faq" routerLinkActive="active">{{ 'FAQ' | translate }}</a></li>
-              <li><a class="nav-link" routerLink="/contact" routerLinkActive="active">{{ 'Contact' | translate }}</a>
-              </li>
+              }
             </ul>
-          </nav>
-
-          <div class="header-controls">
-            <div class="header-controls">
-              <div class="dropdown">
-                <button class="btn dropdown-toggle d-flex align-items-center language-selector" type="button"
-                  id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img [src]="selectedLang.flag" alt="Language flag" class="lang-flag me-2">
-                  <span class="lang-text">{{ selectedLang.label }}</span>
-                </button>
-
-                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                  @for (lang of languages; track lang.code) {
-                  <li>
-                    <a class="dropdown-item d-flex align-items-center" (click)="switchLanguage(lang.code)">
-                      <img [src]="lang.flag" alt="flag" class="lang-flag me-2">
-                      <span>{{ lang.label }}</span>
-                    </a>
-                  </li>
-                  }
-                </ul>
-              </div>
-              <span class="display">
-                <a routerLink="/domain-check" class="btn-cta btn-free">Start Website Test</a>
-              </span>
-            </div>
           </div>
-          <button class="hamburger-menu" aria-label="Toggle menu" (click)="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </header>
+          <span class="display">
+            <a routerLink="/domain-check" class="btn-cta btn-free">Start Website Test</a>
+          </span>
+        </div>
       </div>
-    </section>
+      <button class="hamburger-menu" aria-label="Toggle menu" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
   </div>
-</div>
+</section>
+
 
 <nav class="main-nav mobile-nav" [class.open]="isMenuOpen">
   <ul>

@@ -26,7 +26,7 @@ export class FaqService {
     }
   ];
 
-  getFaqs(): Observable<Faq[]> {
-    return of(this.faqs);
-  }
+    getFaqs(): Faq[] {
+      return this.faqs;
+    }
 }

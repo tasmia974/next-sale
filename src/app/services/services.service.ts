@@ -1,6 +1,6 @@
 // services/service-data.service.ts
 import { Injectable } from '@angular/core';
-import { ServiceCard } from '../models/service.model';
+import { ServiceCard, Steps } from '../models/service.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class ServiceDataService {
       bgIcon: 'assets/img/bg-circle.svg',
       gap: '80px'
     },
-     {
+    {
       title: 'Recruiting Websites',
       description: 'Specialized solutions for HR and recruitment to increase applications.',
       icon: 'assets/img/funding.svg',
@@ -54,4 +54,33 @@ export class ServiceDataService {
   getServices(): ServiceCard[] {
     return this.services;
   }
+
+  private step: Steps[] = [
+    {
+      number: 1,
+      title: 'Enter Your Website URL',
+      description: 'Simply type your website address into the form on this page. No complicated setup or technical knowledge required.',
+      cta: null
+    },
+    {
+      number: 2,
+      title: 'Instantly Receive Your Test Results',
+      description: 'Our system quickly scans your site and provides an instant performance score—covering speed, mobile optimization, and user experience.',
+      cta: null
+    },
+    {
+      number: 3,
+      title: 'Get Expert Analysis + Free PDF Report',
+      description: 'Get a free PDF with expert recommendations and funding advice, delivered to your inbox.',
+      cta: {
+        text: 'Start Free Test Now',
+        link: '/domain-check'
+      }
+    }
+  ];
+
+  getSteps(): Steps[] {
+    return this.step;
+  }
+
 }
