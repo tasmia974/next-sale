@@ -1,0 +1,43 @@
+.mt-responsive-wave {
+  margin-top: -36px;
+  /* Default for small screens */
+
+  @media (min-width: 576px) {
+    margin-top: -63px;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: -130px;
+  }
+
+  @media (min-width: 992px) {
+    margin-top: -138px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: -226px;
+  }
+
+  @media (min-width: 1400px) {
+    margin-top: -264px !important;
+  }
+
+  @media (min-width: 1600px) {
+    margin-top: -304px !important;
+  }
+
+}
+
+@media (min-width: 1400px) {
+  .problem {
+    padding-left: 6rem;
+  }
+
+  .solution {
+    padding-right: 6rem;
+  }
+}
+
+.problem-solution-border {
+  border: 1px solid #DFDFDF;
+}

@@ -1,9 +1,8 @@
-<div class="container my-5">
-  <h1 class="text-center mb-5 fw-bold">Website Quality Checker</h1>
+<div class="container my-3">
 
-  <div class="container my-5">
-
+  <div class="container">
     <form [formGroup]="checkForm" (ngSubmit)="onSubmit()" class="row g-3">
+      <h1 class="text-center mb-2 fw-bold">Website Quality Checker</h1>
       <div class="col-12">
         <label for="domain" class="form-label">Domain</label>
         <input id="domain" type="text" formControlName="domain" class="form-control"

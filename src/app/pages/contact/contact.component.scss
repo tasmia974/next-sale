@@ -16,24 +16,18 @@ p {
   margin: 0;
 }
 
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+.font-Vietnam {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
 .footer-section {
   background-color: #f3f8ff;
   padding-top: 80px;
   padding-bottom: 50px;
 
-}
-
-.footer-container {
-  max-width: 1075px;
-  margin: 0 auto;
-}
-
-.footer-main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px 20px;
-  padding-bottom: 60px;
 }
 
 .footer-column {
@@ -59,7 +53,7 @@ p {
 }
 
 .newsletter-title {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  // font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 500;
   font-size: 24px;
   color: #05011c;
@@ -91,7 +85,7 @@ p {
   outline: none;
   background-color: transparent;
   padding: 8px 16px;
-  font-family: 'Poppins', sans-serif;
+  // font-family: 'Poppins', sans-serif;
   font-size: 14px;
   color: #636977;
 }
@@ -130,6 +124,7 @@ p {
   font-weight: 400;
   line-height: 1;
 }
+
 
 .footer-nav,
 .footer-resources,
@@ -248,7 +243,7 @@ p {
     display: flex;
     text-align: start;
     margin-top: 22px;
-    font-family: 'Poppins';
+    // font-family: 'Poppins';
   }
 
   .newsletter-description,
@@ -260,7 +255,7 @@ p {
     padding-top: 0px;
     padding-bottom: 0px;
     padding: 16px;
-    font-family: 'Poppins';
+    // font-family: 'Poppins';
   }
 
   .social-links-mob {
@@ -314,5 +309,69 @@ p {
 
   .footer-icon {
     margin-left: 46px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .footer-section {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+
+  .footer-column {
+    flex: 1 1 250px;
+  }
+
+  .footer-newsletter {
+    flex: 1 1 450px;
+  }
+
+  .newsletter-title {
+    font-size: 32px;
+  }
+
+  .newsletter-description {
+    font-size: 20px;
+  }
+
+  .newsletter-form {
+    max-width: 450px;
+  }
+
+  .email-input {
+    font-size: 18px;
+  }
+
+  .submit-button {
+    padding: 16px 32px;
+  }
+
+  .footer-nav,
+  .footer-resources,
+  .footer-contact {
+    flex: 1 1 250px;
+  }
+
+  .footer-title {
+    font-size: 20px;
+  }
+
+  .footer-nav a,
+  .footer-resources a {
+    font-size: 20px;
+  }
+
+  .contact-details p {
+    font-size: 20px;
+  }
+
+  .social-links a {
+    width: 60px;
+    height: 60px;
+  }
+
+  .social-links img {
+    width: 28px;
+    height: 28px;
   }
 }

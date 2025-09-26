@@ -1,31 +1,31 @@
-<section id="header">
-  <div class="header-container fixed-top">
+<section id="header" class="w-100">
+  <div class="">
     <header class="site-header">
-      <a href="#" class="logo">
-        <img src="assets/img/icon.svg" alt="Next Sale Developing logo icon" class="logo-icon">
-        <span class="logo-text">Next Sale<br>Developing</span>
-      </a>
+      <div class="container d-flex justify-content-between align-items-center">
+        <a href="#" class="logo d-flex align-items-center">
+          <img src="assets/img/icon.svg" alt="Next Sale Developing logo icon" class="logo-icon me-2">
+          <span class="logo-text">Next Sale<br>Developing</span>
+        </a>
 
-      <nav class="main-nav">
-        <ul>
-          <li><a class="nav-link active" routerLink="/" routerLinkActive="active" fragment="home"
-              [routerLinkActiveOptions]="{ exact: true }">{{ 'Home' | translate }}</a></li>
-          <li><a class="nav-link" routerLink="/about" routerLinkActive="active" fragment="about">{{ 'About us' |
-              translate }}</a>
-          </li>
-          <li><a class="nav-link" routerLink="/services" routerLinkActive="active" fragment="services">{{ 'Services' |
-              translate }}</a>
-          </li>
-          <li><a class="nav-link" routerLink="/faq" routerLinkActive="active" fragment="faq">{{ 'FAQ' | translate }}</a>
-          </li>
-          <li><a class="nav-link" routerLink="/contact" routerLinkActive="active" fragment="contact">{{ 'Contact' |
-              translate }}</a>
-          </li>
-        </ul>
-      </nav>
+        <nav class="main-nav d-none d-lg-flex">
+          <ul class="d-flex gap-4">
+            <li><a class="nav-link active" routerLink="/" routerLinkActive="active" fragment="home"
+                [routerLinkActiveOptions]="{ exact: true }">{{ 'Home' | translate }}</a></li>
+            <li><a class="nav-link" routerLink="/about" routerLinkActive="active" fragment="about">{{ 'About us' |
+                translate }}</a>
+            </li>
+            <li><a class="nav-link" routerLink="/services" routerLinkActive="active" fragment="services">{{ 'Services' |
+                translate }}</a>
+            </li>
+            <li><a class="nav-link" routerLink="/faq" routerLinkActive="active" fragment="faq">{{ 'FAQ' | translate }}</a>
+            </li>
+            <li><a class="nav-link" routerLink="/contact" routerLinkActive="active" fragment="contact">{{ 'Contact' |
+                translate }}</a>
+            </li>
+          </ul>
+        </nav>
 
-      <div class="header-controls">
-        <div class="header-controls">
+        <div class="header-controls d-flex align-items-center gap-3">
           <div class="dropdown">
             <button class="btn dropdown-toggle d-flex align-items-center language-selector" type="button"
               id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,19 +48,19 @@
             <a routerLink="/domain-check" class="btn-cta btn-free">Start Website Test</a>
           </span>
         </div>
+
+        <button class="hamburger-menu" aria-label="Toggle menu" (click)="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <button class="hamburger-menu" aria-label="Toggle menu" (click)="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </header>
   </div>
 </section>
 
-
 <nav class="main-nav mobile-nav" [class.open]="isMenuOpen">
-  <ul>
+  <ul class="d-flex flex-column gap-3">
     <li><a routerLink="/" routerLinkActive="active" (click)="closeMenu()" [routerLinkActiveOptions]="{ exact: true }"
         fragment="home">Home</a></li>
     <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()" fragment="about">About Us</a></li>

@@ -190,15 +190,13 @@
   color: #414141;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
-  /* 27.2px / 16px */
 }
 
 .faq-answer p {
   margin: 0;
   max-width: 864px;
-  /* From Figma node width */
 }
 
 /* Responsive Styles */
@@ -214,27 +212,16 @@
   }
 
   .faq-answer {
-    padding: 8px 20px 24px;
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
-@media (min-width: 992px) {
-    .container{
-      // max-width: 910px;
-    }
-}
 
 #cta-banner {
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-}
-
-.cta-test-container {
-  width: 100%;
-  max-width: 1075px;
 }
 
 .cta-card {
@@ -322,7 +309,7 @@
 @media (max-width: 1200px) {
   .splash-1 {
     left: -15%;
-    top: 5%;
+    // top: 5%;
   }
 
   .splash-2 {
@@ -333,7 +320,6 @@
 
 @media (max-width: 768px) {
   #cta-banner {
-    // padding: 60px 20px;
     margin: 11px;
   }
 
@@ -393,5 +379,25 @@
   }
    .ellipse-divider::before {
     left: 40%;
+  }
+}
+.mt-responsive {
+  margin-top: 80px;
+  /* Default for small screens */
+
+  @media (min-width: 576px) {
+    margin-top: 143px;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 202px;
+  }
+
+  @media (min-width: 992px) {
+    margin-top: 211px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 250px;
   }
 }

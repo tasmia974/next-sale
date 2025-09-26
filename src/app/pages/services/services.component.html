@@ -1,14 +1,6 @@
-<!-- 🌟 Services Title -->
-<section id="services-title" class="text-center py-5">
+<section id="services" class="py-5">
   <div class="container">
-    <h1 class="title-heading">Our Core <span class="highlight">Services</span></h1>
-  </div>
-</section>
-
-<!-- 🌟 Services Section -->
-<section id="services" class="py-2">
-  <div class="container">
-
+    <h1 class="title-heading mb-5">Our Core <span class="highlight">Services</span></h1>
     <!-- Desktop Grid -->
     <div class="row g-4 d-none d-md-flex">
       <div class="col-lg-4 col-md-6" *ngFor="let service of services">
@@ -26,7 +18,7 @@
     </div>
 
     <!-- Mobile Carousel -->
-    <div id="servicesCarousel" class="carousel slide d-md-none" data-bs-ride="carousel">
+    <div id="servicesCarousel" class="carousel d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let service of services; let i = index" [class.active]="i===0">
           <article class="service-card text-center">
@@ -52,24 +44,22 @@
   </div>
 </section>
 
-<section id="get-started">
-  <img src="assets/img/top-wave.svg" class="img-fluid">
-</section>
-
-<!-- 🌟 Steps Section -->
-<section id="get-started">
-  <div class="container">
+<section class="position-relative py-2">
+  <div class="position-absolute w-100">
+    <img src="assets/img/top-wave.svg" class="background-wave">
+  </div>
+  <div class="container mt-responsive">
     <h2 class="get-started-title mb-5">Get Started in 3 Simple Steps</h2>
     <div class="row align-items-center">
-      <div class="col-md-6 text-center order-2 order-md-1">
-        <img src="assets/img/steps.svg" class="img-fluid w-100 h-100 object-fit-cover" alt="Steps">
+      <div class="col-md-6 col-sm-12 text-center order-2 order-md-1">
+        <img src="assets/img/steps.svg" class="img-fluid w-100 h-auto object-fit-cover" alt="Steps">
         <div class="ellipse-divider-blue"></div>
       </div>
-      <div class="col-md-6 order-1 order-md-2">
+      <div class="col-md-6 col-sm-12 order-1 order-md-2">
         <div class="process-steps-wrapper">
-          <div class="" *ngFor="let step of steps; let i = index">
+          <div *ngFor="let step of steps" class="step d-flex align-items-start mb-4">
             <div class="d-flex align-items-start">
-              <div class="process-step-number me-2">{{ i+1 }}</div>
+              <div class="step-circle me-3 mt-2">{{ step.number }}</div>
               <div class="process-step-content">
                 <h3>{{ step.title }}</h3>
                 <p>{{ step.description }}</p>
@@ -88,16 +78,12 @@
   </div>
 </section>
 
-<!-- 🌟 Clients Title -->
-<section id="client-title" class="text-center py-5">
-  <div class="container">
-    <h1 class="title-heading">What <span class="highlight">Our Clients </span>Says?</h1>
+<section class="position-relative py-2">
+  <div class="position-absolute w-100">
+    <img src="assets/img/wavs.svg" class="background-wave mt-responsives">
   </div>
-</section>
-
-<!-- 🌟 Testimonials Carousel -->
-<section id="clients" class="py-2">
   <div class="container">
+    <h1 class="title-heading mb-5">What <span class="highlight">Our Clients </span>Says?</h1>
     <div id="carouselTwo" class="carousel carousel-two slide" data-bs-ride="carousel">
 
       <!-- Indicators -->
@@ -138,8 +124,4 @@
 
     </div>
   </div>
-</section>
-
-<section id="get-started">
-  <img src="assets/img/top-wave.svg" class="img-fluid mt-5">
 </section>

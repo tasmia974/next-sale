@@ -38,11 +38,11 @@ export class ServicesComponent {
   updateChunkSize() {
     const width = window.innerWidth;
     if (width < 768) {
-      this.chunkSize = 1; // small screen → 1 per slide
+      this.chunkSize = 1;
     } else if (width < 992) {
-      this.chunkSize = 2; // medium → 2 per slide
+      this.chunkSize = 2;
     } else {
-      this.chunkSize = 3; // large → 3 per slide
+      this.chunkSize = 3;
     }
   }
 
