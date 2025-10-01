@@ -1,5 +1,5 @@
 .mt-responsive-wave {
-  margin-top: -36px;
+  margin-top: -26px;
   /* Default for small screens */
 
   @media (min-width: 576px) {
@@ -26,6 +26,13 @@
     margin-top: -304px !important;
   }
 
+  @media (min-width: 1900px) {
+    margin-top: -382px !important;
+  }
+
+  @media (min-width: 2500px) {
+    margin-top: -568px !important;
+  }
 }
 
 @media (min-width: 1400px) {

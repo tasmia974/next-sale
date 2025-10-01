@@ -17,7 +17,7 @@ export class ServicesComponent {
   services: ServiceCard[] = [];
   steps: Steps[] = [];
   testimonials: Testimonial[] = [];
-  chunkSize = 3;
+  public chunkSize = 3;
 
   constructor(private serviceData: ServiceDataService,
     private testimonalServices: TestimonialService
@@ -29,6 +29,7 @@ export class ServicesComponent {
     this.steps = this.serviceData.getSteps();
     this.updateChunkSize();
   }
+
 
    @HostListener('window:resize', [])
   onResize() {
