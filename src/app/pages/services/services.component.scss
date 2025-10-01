@@ -416,6 +416,10 @@
     margin-top: 551px;
   }
 
+  @media (width: 1180px) {
+    margin-top: 500px !important;
+  }
+
   @media (min-width: 1200px) {
     margin-top: 474px;
   }
@@ -518,7 +522,7 @@
 }
 
 /* Carousel One */
- .carousel-indicators [data-bs-target] {
+.carousel-indicators [data-bs-target] {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -527,7 +531,7 @@
   margin: 0 5px;
 }
 
- .carousel-indicators .active {
+.carousel-indicators .active {
   width: 50px;
   height: 10px;
   border-radius: 17px;
@@ -566,7 +570,7 @@
   border-radius: 12px;
   padding: 3rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  // transition: transform 0.3s ease;
   border: 1px solid #DFDFDF;
 }
 
@@ -651,14 +655,20 @@
 
   .service-card {
     height: 322px !important;
-    margin-left: 8px;
+    margin-left: 3px;
+    padding: 3rem;
   }
 
   .testimonial-card {
     height: 390px !important;
-    margin-left: 8px;
-    display: block;
-    padding: 1rem;
+    margin-left: 1px;
+    padding: 3rem;
+  }
+}
+
+@media (width: 1180px) {
+  .testimonial-card {
+    height: 550px !important;
   }
 }
 
@@ -678,5 +688,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
 
+.carousel-item {
+  // transition: none !important;
+   transition: transform 0.8s ease;
 }

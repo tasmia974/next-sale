@@ -18,7 +18,7 @@
     </div>
 
     <!-- Mobile Carousel -->
-    <div id="servicesCarousel" class="carousel d-md-none" data-bs-ride="carousel">
+    <!-- <div id="servicesCarousel" class="carousel d-md-none" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let service of services; let i = index" [class.active]="i===0">
           <article class="service-card text-center">
@@ -33,13 +33,27 @@
           </article>
         </div>
       </div>
+    </div> -->
+
+    <!-- Scroll wrapper -->
+    <div class="d-flex overflow-auto overflow-y-hidden flex-nowrap" style="gap: 1rem;">
+      <div *ngFor="let service of services">
+        <article class="service-card text-center">
+          <div class="service-icon-wrapper mb-3">
+            <img src="assets/img/bg-circle.svg" class="icon-bg">
+            <img [src]="service.icon" class="icon-fg">
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">{{ service.title }}</h3>
+            <p class="service-description">{{ service.description }}</p>
+          </div>
+        </article>
+      </div>
     </div>
 
     <!-- CTA Button -->
-    <div class="row mt-5 button-container mt-5">
-      <div class="col-12 text-center">
-        <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
-      </div>
+    <div class="d-flex justify-content-center mt-5">
+      <a routerLink="/domain-check" class="btn-cta btn-free">Start Free Test Now</a>
     </div>
   </div>
 </section>
@@ -66,10 +80,9 @@
               </div>
             </div>
           </div>
-          <div class="row button-container">
-            <div class="col-12 text-center">
-              <a routerLink="/domain-check" class="cta-button">Start Free Test Now</a>
-            </div>
+          <!-- CTA Button -->
+          <div class="d-flex justify-content-center">
+            <a routerLink="/domain-check" class="btn-cta btn-free">Start Free Test Now</a>
           </div>
         </div>
         <div class="ellipse-divider"></div>
@@ -78,11 +91,11 @@
   </div>
 </section>
 
-<section class="position-relative py-2">
-  <div class="position-absolute w-100">
+<section class="section-with-bg py-2">
+  <div class="background w-100">
     <img src="assets/img/wavs.svg" class="background-wave mt-responsives">
   </div>
-  <div class="container">
+  <div class="container content">
     <h1 class="title-heading mb-5">What <span class="highlight">Our Clients </span>Says?</h1>
     <!-- desktop -->
     <div id="carouselTwo" class="carousel carousel-two d-none d-md-flex" data-bs-ride="carousel">
@@ -124,7 +137,7 @@
     </div>
 
     <!-- mobile -->
-     <div id="carouselTwo" class="carousel carousel-two d-md-none" data-bs-ride="carousel">
+    <div id="carouselTwo" class="carousel carousel-two d-md-none" data-bs-ride="carousel">
       <!-- Carousel Inner -->
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let slide of getSlides();

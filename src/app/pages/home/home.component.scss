@@ -33,6 +33,10 @@
   @media (min-width: 2500px) {
     margin-top: -568px !important;
   }
+
+  @media (width: 1180px) {
+    margin-top: -200px !important;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -48,3 +52,4 @@
 .problem-solution-border {
   border: 1px solid #DFDFDF;
 }
+

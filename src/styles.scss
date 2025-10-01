@@ -610,3 +610,17 @@ html {
   }
 }
 
+.section-with-bg {
+  position: relative;
+  z-index: 1;
+}
+
+.section-with-bg .content {
+  position: relative;
+  z-index: 2;
+}
+
+.section-with-bg .background {
+  position: absolute;
+  z-index: 0;
+}
