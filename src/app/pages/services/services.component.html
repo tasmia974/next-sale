@@ -84,13 +84,47 @@
   </div>
   <div class="container">
     <h1 class="title-heading mb-5">What <span class="highlight">Our Clients </span>Says?</h1>
-    <div id="carouselTwo" class="carousel carousel-two" data-bs-ride="carousel">
+    <!-- desktop -->
+    <div id="carouselTwo" class="carousel carousel-two d-none d-md-flex" data-bs-ride="carousel">
       <!-- Indicators -->
-      <!-- <div class="carousel-indicators">
+      <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="1"></button>
         <button type="button" data-bs-target="#carouselTwo" data-bs-slide-to="2"></button>
-      </div> -->
+      </div>
+      <!-- Carousel Inner -->
+      <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let slide of getSlides();
+         let i = index" [class.active]="i === 0">
+          <div class="row g-4">
+            <div class="col-12 col-md-6 col-lg-4" *ngFor="let t of slide">
+              <article class="testimonial-card h-100">
+                <div class="rating-container mb-3">
+                  <div class="rating-badge d-flex align-items-center">
+                    <img src="assets/img/star.svg" class="star-icon me-1">
+                    <span class="rating-text">{{ t.rating }}</span>
+                  </div>
+                </div>
+                <blockquote class="testimonial-quote">
+                  {{ t.quote }}
+                </blockquote>
+                <footer class="author-profile d-flex align-items-center mt-3">
+                  <img [src]="t.avatar" class="author-avatar me-3">
+                  <div class="author-details">
+                    <p class="author-name mb-0">{{ t.name }}</p>
+                    <p class="author-title mb-0">{{ t.title }}</p>
+                  </div>
+                </footer>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- mobile -->
+     <div id="carouselTwo" class="carousel carousel-two d-md-none" data-bs-ride="carousel">
       <!-- Carousel Inner -->
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let slide of getSlides();
