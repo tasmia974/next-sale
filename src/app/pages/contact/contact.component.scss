@@ -217,9 +217,13 @@ p {
   color: #636977;
 }
 
-// .social-links-mob {
-//   display: none;
-// }
+
+
+@media (max-width: 319.98px) {
+  .newsletter-content {
+    text-align: center;
+  }
+}
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .footer-section {

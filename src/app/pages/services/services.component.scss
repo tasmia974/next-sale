@@ -390,6 +390,22 @@
   @media (min-width: 1200px) {
     margin-top: 300px;
   }
+
+  @media (min-width: 3400px) {
+    margin-top: 436px;
+  }
+
+  @media (min-width: 3800px) {
+    margin-top: 485px;
+  }
+
+  @media (min-width: 4000px) {
+    margin-top: 520px;
+  }
+
+  @media (min-width: 5120px) {
+    margin-top: 590px;
+  }
 }
 
 .mt-responsives {
@@ -397,7 +413,7 @@
   /* Default for small screens */
 
   @media (max-width: 320px) {
-    margin-top: 500px !important;
+    margin-top: 500px;
   }
 
   @media (max-width: 380px) {
@@ -438,6 +454,22 @@
 
   @media (min-width: 2500px) {
     margin-top: 128px !important;
+  }
+
+  @media (min-width: 3400px) {
+    margin-top: 0px !important;
+  }
+
+  @media (min-width: 3800px) {
+    margin-top: 0px !important;
+  }
+
+  @media (min-width: 4000px) {
+    margin-top: 0px !important;
+  }
+
+  @media (min-width: 5120px) {
+    margin-top: -300px !important;
   }
 }
 
@@ -630,6 +662,9 @@
     font-weight: 400;
     font-size: 14px;
   }
+  .testimonial-card {
+    padding: 2rem;
+  }
 }
 
 
@@ -692,5 +727,5 @@
 
 .carousel-item {
   // transition: none !important;
-   transition: transform 0.8s ease;
+  transition: transform 0.8s ease;
 }

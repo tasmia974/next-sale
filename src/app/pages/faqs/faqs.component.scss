@@ -377,10 +377,12 @@
   .margin-top {
     margin-top: 70px;
   }
-   .ellipse-divider::before {
+
+  .ellipse-divider::before {
     left: 40%;
   }
 }
+
 .mt-responsive {
   margin-top: 80px;
   /* Default for small screens */
@@ -399,5 +401,21 @@
 
   @media (min-width: 1200px) {
     margin-top: 250px;
+  }
+
+  @media (min-width: 3400px) {
+    margin-top: 432px !important;
+  }
+
+  @media (min-width: 3800px) {
+    margin-top: 540px !important;
+  }
+
+  @media (min-width: 4000px) {
+    margin-top: 638px !important;
+  }
+
+  @media (min-width: 5120px) {
+    margin-top: 710px !important;
   }
 }
