@@ -219,9 +219,9 @@ p {
 
 
 
-@media (max-width: 319.98px) {
+@media (max-width: 319px) {
   .newsletter-content {
-    text-align: center;
+    text-align: center !important;
   }
 }
 
@@ -295,7 +295,7 @@ p {
 
 @media (min-width: 320px) and (max-width: 480px) {
   .newsletter-content {
-    text-align: center;
+    text-align: center !important;
   }
 
   .social-links {
