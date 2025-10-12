@@ -412,12 +412,16 @@
   margin-top: 438px;
   /* Default for small screens */
 
+  @media (max-width: 319px) {
+    margin-top: 593px;
+  }
+
   @media (max-width: 320px) {
     margin-top: 500px;
   }
 
   @media (max-width: 380px) {
-    margin-top: 450px;
+    margin-top: 450px ;
   }
 
   @media (min-width: 576px) {
@@ -592,8 +596,6 @@
 
 .testimonial-card {
   height: 534px !important;
-  // width: 411px;
-  // margin-left: 47px;
 }
 
 .service-card,
@@ -602,7 +604,6 @@
   border-radius: 12px;
   padding: 3rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  // transition: transform 0.3s ease;
   border: 1px solid #DFDFDF;
 }
 
@@ -662,8 +663,22 @@
     font-weight: 400;
     font-size: 14px;
   }
+
   .testimonial-card {
-    padding: 2rem;
+    padding: 2rem !important;
+    height: 394px !important;
+  }
+
+  .step-circle {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 18px !important;
+  }
+
+  .service-card {
+    height: 322px !important;
+    margin-left: 1px;
+    padding: 3rem;
   }
 }
 
@@ -689,7 +704,7 @@
   }
 
   .service-card {
-    height: 322px !important;
+    height: 317px !important;
     margin-left: 3px;
     padding: 3rem;
   }
