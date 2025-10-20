@@ -68,7 +68,8 @@
               "buildTarget": "next-sale:build:production"
             },
             "development": {
-              "buildTarget": "next-sale:build:development"
+              "buildTarget": "next-sale:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
